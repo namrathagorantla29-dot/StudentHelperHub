@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Certificate of Achievement | Student Helper Hub</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <style>
+        /* =========================
+           GLOBAL STYLES
+        ========================= */
+
+        :root {
+            --primary: #0d47a1;
+            --primary-dark: #082e69;
+            --primary-light: #eaf2ff;
+            --gold: #c99a32;
+            --text-dark: #202b3c;
+            --text-muted: #6b7280;
+            --page-bg: #f3f6fc;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Poppins", sans-serif;
+            color: var(--text-dark);
+            background: var(--page-bg);
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .page-header {
+            min-height: 76px;
+            padding: 16px 6%;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+
+            background: var(--white);
+            border-bottom: 1px solid #e5eaf3;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            color: var(--primary);
+            font-size: 19px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .brand-icon {
+            width: 42px;
+            height: 42px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            color: var(--white);
+            background: var(--primary);
+            border-radius: 12px;
+            font-size: 20px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            color: var(--gold);
+        }
+
+
+        /* =========================
+           PAGE INTRODUCTION
+        ========================= */
+
+        .certificate-page {
+            width: 100%;
+            max-width: 1250px;
+
+            margin: 0 auto;
+            padding: 48px 24px 55px;
+        }
+
+        .page-intro {
+            max-width: 680px;
+            margin: 0 auto 35px;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-block;
+            margin-bottom: 12px;
+
+            color: var(--primary);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+        }
+
+        .page-intro h1 {
+            margin-bottom: 12px;
+            color: var(--primary-dark);
+            font-size: clamp(25px, 4vw, 36px);
+        }
+
+        .page-intro p {
+            max-width: 580px;
+            margin: 0 auto;
+
+            color: var(--text-muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           CERTIFICATE DESIGN
+        ========================= */
+
+        .certificate {
+            width: 100%;
+            padding: 13px;
+
+            background: linear-gradient(
+                135deg,
+                #f6e5a9,
+                #c99a32,
+                #f9edc7,
+                #b88727
+            );
+
+            box-shadow: 0 18px 50px rgba(19, 45, 91, 0.13);
+        }
+
+        .certificate-frame {
+            width: 100%;
+            padding: 10px;
+
+            border: 1px solid white;
+            background: #fffdf7;
+        }
+
+        .certificate-inner {
+            position: relative;
+            min-height: 570px;
+            padding: 35px 55px 25px;
+
+            overflow: hidden;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            border: 2px solid var(--primary);
+            outline: 1px solid var(--gold);
+            outline-offset: -8px;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(244, 223, 155, 0.13),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at bottom right,
+                    rgba(13, 71, 161, 0.05),
+                    transparent 35%
+                ),
+                #fffdf7;
+        }
+
+        .certificate-inner::before,
+        .certificate-inner::after {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            content: "";
+            border: 3px solid var(--gold);
+            opacity: 0.65;
+        }
+
+        .certificate-inner::before {
+            top: 16px;
+            left: 16px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        .certificate-inner::after {
+            right: 16px;
+            bottom: 16px;
+            border-top: none;
+            border-left: none;
+        }
+
+
+        /* =========================
+           CERTIFICATE BRANDING
+        ========================= */
+
+        .certificate-top {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .certificate-logo {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+
+            color: var(--primary);
+            background: #fffaf0;
+            font-size: 25px;
+        }
+
+        .institution-name {
+            color: var(--primary-dark);
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+
+        .institution-tagline {
+            margin-top: 5px;
+
+            color: var(--gold);
+            font-size: 9px;
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+
+        /* =========================
+           CERTIFICATE HEADING
+        ========================= */
+
+        .certificate-heading {
+            position: relative;
+            z-index: 1;
+
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .certificate-heading h2 {
+            color: var(--primary-dark);
+            font-family: "Playfair Display", serif;
+            font-size: clamp(42px, 6vw, 62px);
+            line-height: 1.15;
+        }
+
+        .of-achievement {
+            margin-top: 5px;
+
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 6px;
+        }
+
+        .gold-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 16px;
+            color: var(--gold);
+        }
+
+        .gold-divider span {
+            width: 75px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+
+        /* =========================
+           STUDENT AND COURSE
+        ========================= */
+
+        .certificate-content {
+            position: relative;
+            z-index: 1;
+
+            width: 100%;
+            margin-top: 22px;
+            text-align: center;
+        }
+
+        .presentation-text,
+        .completion-text {
+            color: #687386;
+            font-size: 12px;
+        }
+
+        .student-name {
+            display: inline-block;
+            min-width: 50%;
+
+            margin: 10px 0 12px;
+            padding: 0 15px 8px;
+
+            border-bottom: 1px solid var(--gold);
+
+            color: var(--primary);
+            font-family: "Playfair Display", serif;
+            font-size: clamp(24px, 4vw, 37px);
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        .course-name {
+            margin-top: 12px;
+
+            color: var(--primary-dark);
+            font-size: clamp(18px, 3vw, 24px);
+            font-weight: 700;
+            overflow-wrap: anywhere;
+        }
+
+        .achievement-description {
+            max-width: 570px;
+            margin: 10px auto 0;
+
+            color: #687386;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           CERTIFICATE DETAILS
+        ========================= */
+
+        .certificate-bottom {
+            position: relative;
+            z-index: 1;
+
+            width: 100%;
+            margin-top: auto;
+            padding-top: 30px;
+
+            display: grid;
+            grid-template-columns: 1fr 100px 1fr;
+            align-items: end;
+            gap: 20px;
+        }
+
+        .signature-block,
+        .date-block {
+            text-align: center;
+        }
+
+        .signature-line {
+            width: 100%;
+            max-width: 190px;
+            height: 1px;
+
+            margin: 0 auto 7px;
+            background: var(--gold);
+        }
+
+        .signature-name {
+            color: var(--primary-dark);
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+        .signature-role {
+            margin-top: 3px;
+            color: var(--text-muted);
+            font-size: 9px;
+        }
+
+        .seal {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border: 2px solid var(--gold);
+            border-radius: 50%;
+            background: #fff9e9;
+        }
+
+        .seal-inner {
+            width: 74px;
+            height: 74px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            border: 1px dashed var(--gold);
+            border-radius: 50%;
+            color: var(--primary);
+        }
+
+        .seal-inner i {
+            margin-bottom: 4px;
+            color: var(--gold);
+            font-size: 22px;
+        }
+
+        .seal-inner span {
+            font-size: 7px;
+            letter-spacing: 1px;
+        }
+
+        .seal-inner strong {
+            margin-top: 2px;
+            font-size: 7px;
+        }
+
+        .detail-label {
+            color: var(--text-muted);
+            font-size: 8px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .detail-value,
+        .certificate-id {
+            margin-top: 4px;
+
+            color: var(--primary-dark);
+            font-size: 10px;
+            font-weight: 600;
+            overflow-wrap: anywhere;
+        }
+
+        .date-line {
+            width: 100%;
+            max-width: 190px;
+            height: 1px;
+
+            margin: 8px auto;
+            background: var(--gold);
+        }
+
+        .certificate-footer {
+            position: relative;
+            z-index: 1;
+
+            width: 100%;
+            margin-top: 25px;
+            padding-top: 12px;
+
+            border-top: 1px solid #ead9a7;
+
+            color: #8b752f;
+            font-size: 8px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-align: center;
+        }
+
+
+        /* =========================
+           ACTION BUTTONS
+        ========================= */
+
+        .certificate-actions {
+            margin-top: 30px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .primary-button,
+        .secondary-button {
+            min-height: 46px;
+            padding: 12px 22px;
+
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 9px;
+
+            border-radius: 9px;
+
+            font-family: "Poppins", sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+
+            transition: 0.2s ease;
+        }
+
+        .primary-button {
+            border: 1px solid var(--primary);
+            color: white;
+            background: var(--primary);
+        }
+
+        .primary-button:hover {
+            transform: translateY(-2px);
+            background: var(--primary-dark);
+            box-shadow: 0 8px 20px rgba(13, 71, 161, 0.2);
+        }
+
+        .secondary-button {
+            border: 1px solid #d7dfed;
+            color: var(--primary);
+            background: white;
+        }
+
+        .secondary-button:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            background: var(--primary-light);
+        }
+
+        .certificate-note {
+            margin-top: 24px;
+            color: var(--text-muted);
+            font-size: 11px;
+            text-align: center;
+        }
+
+
+        /* =========================
+           PAGE FOOTER
+        ========================= */
+
+        .page-footer {
+            padding: 20px;
+
+            border-top: 1px solid #e5eaf3;
+
+            color: var(--text-muted);
+            background: white;
+
+            font-size: 11px;
+            text-align: center;
+        }
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================= */
+
+        @media (max-width: 768px) {
+
+            .page-header {
+                padding: 14px 5%;
+            }
+
+            .brand {
+                font-size: 15px;
+            }
+
+            .brand-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 17px;
+            }
+
+            .back-link {
+                font-size: 11px;
+            }
+
+            .certificate-page {
+                padding: 35px 14px;
+            }
+
+            .certificate {
+                padding: 7px;
+            }
+
+            .certificate-frame {
+                padding: 6px;
+            }
+
+            .certificate-inner {
+                min-height: 590px;
+                padding: 35px 20px 22px;
+            }
+
+            .certificate-inner::before,
+            .certificate-inner::after {
+                width: 65px;
+                height: 65px;
+            }
+
+            .institution-name {
+                font-size: 11px;
+                letter-spacing: 2px;
+            }
+
+            .institution-tagline {
+                font-size: 7px;
+            }
+
+            .of-achievement {
+                font-size: 10px;
+                letter-spacing: 4px;
+            }
+
+            .gold-divider span {
+                width: 45px;
+            }
+
+            .presentation-text,
+            .completion-text {
+                font-size: 10px;
+            }
+
+            .certificate-bottom {
+                grid-template-columns: 1fr 75px 1fr;
+                gap: 8px;
+            }
+
+            .seal {
+                width: 68px;
+                height: 68px;
+            }
+
+            .seal-inner {
+                width: 56px;
+                height: 56px;
+            }
+
+            .seal-inner i {
+                font-size: 16px;
+            }
+
+            .seal-inner span,
+            .seal-inner strong {
+                font-size: 5px;
+            }
+
+            .signature-name {
+                font-size: 9px;
+            }
+
+            .signature-role {
+                font-size: 8px;
+            }
+
+            .detail-label {
+                font-size: 7px;
+                letter-spacing: 0.5px;
+            }
+
+            .detail-value,
+            .certificate-id {
+                font-size: 8px;
+            }
+
+            .certificate-footer {
+                font-size: 6px;
+                letter-spacing: 1px;
+            }
+        }
+
+
+        @media (max-width: 420px) {
+
+            .page-header {
+                align-items: flex-start;
+            }
+
+            .brand {
+                gap: 7px;
+                font-size: 12px;
+            }
+
+            .back-link {
+                gap: 4px;
+                font-size: 10px;
+            }
+
+            .certificate-inner {
+                min-height: 610px;
+                padding-right: 12px;
+                padding-left: 12px;
+            }
+
+            .certificate-bottom {
+                grid-template-columns: 1fr 1fr;
+                row-gap: 22px;
+            }
+
+            .seal {
+                grid-column: 1 / -1;
+                grid-row: 1;
+            }
+
+            .signature-block {
+                grid-column: 1;
+                grid-row: 2;
+            }
+
+            .date-block {
+                grid-column: 2;
+                grid-row: 2;
+            }
+
+            .certificate-actions {
+                flex-direction: column;
+            }
+
+            .primary-button,
+            .secondary-button {
+                width: 100%;
+            }
+        }
+
+
+        /* =========================
+           PRINT / SAVE AS PDF
+        ========================= */
+
+        @page {
+            size: A4 landscape;
+            margin: 8mm;
+        }
+
+        @media print {
+
+            body {
+                min-height: auto;
+                background: white;
+
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+
+            .page-header,
+            .page-intro,
+            .certificate-actions,
+            .certificate-note,
+            .page-footer {
+                display: none !important;
+            }
+
+            .certificate-page {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .certificate {
+                width: 100%;
+                padding: 7px;
+                box-shadow: none;
+                break-inside: avoid;
+            }
+
+            .certificate-frame {
+                padding: 5px;
+            }
+
+            .certificate-inner {
+                min-height: 175mm;
+                padding: 18px 45px 15px;
+            }
+
+            .certificate-top .certificate-logo {
+                width: 42px;
+                height: 42px;
+                font-size: 20px;
+            }
+
+            .certificate-heading {
+                margin-top: 12px;
+            }
+
+            .certificate-heading h2 {
+                font-size: 44px;
+            }
+
+            .certificate-content {
+                margin-top: 12px;
+            }
+
+            .student-name {
+                margin: 6px 0;
+                font-size: 28px;
+            }
+
+            .course-name {
+                margin-top: 7px;
+                font-size: 19px;
+            }
+
+            .achievement-description {
+                margin-top: 6px;
+                font-size: 9px;
+            }
+
+            .certificate-bottom {
+                padding-top: 14px;
+            }
+
+            .seal {
+                width: 70px;
+                height: 70px;
+            }
+
+            .seal-inner {
+                width: 58px;
+                height: 58px;
+            }
+
+            .certificate-footer {
+                margin-top: 12px;
+                padding-top: 7px;
+                font-size: 7px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <header class="page-header">
+
+        <a href="../index.html" class="brand">
+            <span class="brand-icon">
+                <i class="fa-solid fa-graduation-cap"></i>
+            </span>
+
+            <span>Student Helper Hub</span>
+        </a>
+
+        <a href="notes.html" class="back-link">
+            <i class="fa-solid fa-arrow-left"></i>
+            Back to Notes
+        </a>
+
+    </header>
+
+
+    <main class="certificate-page">
+
+        <section class="page-intro">
+
+            <span class="eyebrow">YOUR LEARNING ACHIEVEMENT</span>
+
+            <h1>Celebrate Your Progress</h1>
+
+            <p>
+                Every completed course represents another step toward
+                your academic goals. Celebrate what you have achieved!
+            </p>
+
+        </section>
+
+
+        <section class="certificate" id="certificate">
+
+            <div class="certificate-frame">
+
+                <div class="certificate-inner">
+
+                    <div class="certificate-top">
+
+                        <div class="certificate-logo">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+
+                        <p class="institution-name">
+                            STUDENT HELPER HUB
+                        </p>
+
+                        <p class="institution-tagline">
+                            LEARN SMARTER. ACHIEVE MORE.
+                        </p>
+
+                    </div>
+
+
+                    <div class="certificate-heading">
+
+                        <h2>Certificate</h2>
+
+                        <p class="of-achievement">
+                            OF ACHIEVEMENT
+                        </p>
+
+                        <div class="gold-divider">
+                            <span></span>
+                            <i class="fa-solid fa-star"></i>
+                            <span></span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="certificate-content">
+
+                        <p class="presentation-text">
+                            This certificate is proudly presented to
+                        </p>
+
+                        <h3 class="student-name" id="studentName">
+                            Student Name
+                        </h3>
+
+                        <p class="completion-text">
+                            in recognition of successfully completing
+                        </p>
+
+                        <h4 class="course-name" id="courseName">
+                            Course or Subject Name
+                        </h4>
+
+                        <p class="achievement-description">
+                            demonstrating dedication, consistent learning,
+                            and commitment to academic excellence.
+                        </p>
+
+                    </div>
+
+
+                    <div class="certificate-bottom">
+
+                        <div class="signature-block">
+
+                            <div class="signature-line"></div>
+
+                            <p class="signature-name">
+                                Student Helper Hub
+                            </p>
+
+                            <p class="signature-role">
+                                Learning Platform
+                            </p>
+
+                        </div>
+
+
+                        <div class="seal">
+
+                            <div class="seal-inner">
+
+                                <i class="fa-solid fa-award"></i>
+
+                                <span>LEARNING</span>
+
+                                <strong>EXCELLENCE</strong>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="date-block">
+
+                            <p class="detail-label">
+                                DATE OF ISSUE
+                            </p>
+
+                            <p class="detail-value" id="issueDate">
+                                To be assigned
+                            </p>
+
+                            <div class="date-line"></div>
+
+                            <p class="detail-label">
+                                CERTIFICATE ID
+                            </p>
+
+                            <p class="certificate-id" id="certificateId">
+                                To be generated
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="certificate-footer">
+                        A MILESTONE IN YOUR JOURNEY OF LIFELONG LEARNING
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <div class="certificate-actions">
+
+            <button
+                class="primary-button"
+                onclick="window.print()">
+
+                <i class="fa-solid fa-download"></i>
+                Print / Save as PDF
+
+            </button>
+
+            <a href="notes.html" class="secondary-button">
+
+                <i class="fa-solid fa-book-open"></i>
+                Continue Learning
+
+            </a>
+
+        </div>
+
+
+        <p class="certificate-note">
+            Your achievements deserve to be celebrated.
+            Keep learning and keep growing!
+        </p>
+
+    </main>
+
+
+    <footer class="page-footer">
+
+        <p>
+            &copy; 2026 Student Helper Hub.
+            Learn something new every day.
+        </p>
+
+    </footer>
+    <script src="data_notes.js"></script>
+    <script src="certificate.js"></script>
+
+</body>
+</html>

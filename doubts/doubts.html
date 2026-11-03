@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doubts - Student Helper Hub</title>
+<script src="../js/main.js" defer></script>
+<script src="doubts.js" defer></script>
+
+<style>
+
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Body */
+body{
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#eef3f8,#dbe9ff);
+    min-height:100vh;
+}
+
+/* Navbar */
+nav{
+    background:#0d47a1;
+    color:white;
+    text-align:center;
+    padding:18px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+nav h2{
+    font-size:26px;
+}
+
+/* Main */
+.main{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:40px 0;
+}
+
+/* Heading */
+.heading{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.heading h1{
+    color:#0d47a1;
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.heading p{
+    color:#555;
+    font-size:17px;
+}
+
+/* Grid */
+.grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+/* Card */
+.card{
+    background:white;
+    border-radius:18px;
+    padding:28px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+
+/* Section Title */
+.card h2{
+    color:#0d47a1;
+    margin-bottom:18px;
+    font-size:24px;
+}
+
+/* Inputs */
+input, textarea{
+    width:100%;
+    padding:14px;
+    margin-bottom:14px;
+    border:1px solid #d0d7e2;
+    border-radius:10px;
+    font-size:15px;
+    outline:none;
+}
+
+textarea{
+    resize:none;
+}
+
+/* Button */
+button{
+    background:#0d47a1;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:10px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#08306b;
+}
+
+/* Doubt List */
+.doubt-list{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+/* Doubt Item */
+.doubt-item{
+    background:#f5f8ff;
+    border-left:5px solid #0d47a1;
+    padding:18px;
+    border-radius:12px;
+}
+
+.doubt-item h3{
+    color:#0d47a1;
+    margin-bottom:8px;
+    font-size:18px;
+}
+
+.doubt-item p{
+    color:#444;
+    margin-bottom:12px;
+    line-height:1.5;
+}
+
+/* Actions */
+.actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+.small-btn{
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:13px;
+    background:#e3ebff;
+    color:#0d47a1;
+}
+
+.small-btn:hover{
+    background:#d4e2ff;
+}
+
+/* Full Width */
+.full{
+    grid-column:1 / -1;
+}
+
+/* Responsive */
+@media(max-width:900px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:25px;
+    color:#666;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+    <h2>Student Helper Hub</h2>
+</nav>
+
+<div class="main">
+
+<div class="heading">
+    <h1>Ask Doubts 💬</h1>
+    <p>Learn together by asking and solving academic doubts</p>
+</div>
+
+<div class="grid">
+
+<!-- Post Doubt -->
+<div class="card">
+
+    <h2>Post Your Question</h2>
+
+    <input type="text" id="subjectInput" placeholder="Enter Subject Name">
+
+    <textarea rows="5" id="doubtInput" placeholder="Type your doubt here..."></textarea>
+
+    <button onclick="postDoubt()">Post Doubt</button>
+
+</div>
+
+
+<!-- My Doubts -->
+<div class="card">
+
+    <h2>My Doubts</h2>
+
+    <div class="doubt-list" id="myDoubts">
+
+    <div class="doubt-item">
+        <h3>Java</h3>
+        <p>Explain inheritance with example.</p>
+
+        <div class="actions">
+            <button class="small-btn"
+            onclick="likeDoubt(this)">
+            ❤️ Like
+            </button>
+
+            <button class="small-btn"
+            onclick="deleteDoubt(this)">
+            🗑 Delete
+            </button>
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+
+<!-- Recent Doubts -->
+<div class="card full">
+
+    <h2>Recent Doubts</h2>
+
+    <div class="doubt-list" id="recentDoubts">
+
+    <div class="doubt-item">
+        <h3>DBMS</h3>
+        <p>What is normalization in DBMS?</p>
+
+        <div class="actions">
+
+            <button class="small-btn"
+            onclick="likeDoubt(this)">
+            ❤️ Like
+            </button>
+
+            <button class="small-btn"
+            onclick="replyDoubt()">
+            Reply
+            </button>
+
+        </div>
+    </div>
+
+    <div class="doubt-item">
+        <h3>Operating System</h3>
+        <p>Difference between process and thread?</p>
+
+        <div class="actions">
+
+            <button class="small-btn"
+            onclick="likeDoubt(this)">
+            ❤️ Like
+            </button>
+
+            <button class="small-btn"
+            onclick="replyDoubt()">
+            Reply
+            </button>
+
+        </div>
+    </div>
+
+    <div class="doubt-item">
+        <h3>DAA</h3>
+        <p>How does merge sort work?</p>
+
+        <div class="actions">
+
+            <button class="small-btn"
+            onclick="likeDoubt(this)">
+            ❤️ Like
+            </button>
+
+            <button class="small-btn"
+            onclick="replyDoubt()">
+            Reply
+            </button>
+
+        </div>
+    </div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Student Helper Hub
+</footer>
+
+<script src="authe.js"></script>
+
+<script>
+    requireLogin();
+</script>
+
+</body>
+</html>

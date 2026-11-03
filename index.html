@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Helper Hub</title>
+<script src="../js/main.js" defer></script>
+<script src="../js/script.js" defer></script>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(to right,#eef2f3,#d9e4f5);
+}
+
+a, button{
+    transition:0.3s ease;
+}
+
+nav{
+    background:#0d47a1;
+    color:white;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav h2{
+    margin:0;
+}
+
+.nav-left{
+    display:flex;
+    gap:20px;
+    align-items:center;
+}
+
+.nav-left a{
+    color:white;
+    text-decoration:none;
+    padding:8px 12px;
+    border-radius:8px;
+}
+
+.nav-left a:hover{
+    background:rgba(255,255,255,0.15);
+    color:#bbdefb;
+    transform:translateY(-2px);
+}
+
+.nav-right{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.nav-right button{
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+    background:white;
+    color:#0d47a1;
+    font-weight:bold;
+    transition:0.3s ease;
+}
+
+.nav-right button:hover{
+    background:#bbdefb;
+    color:#08306b;
+    transform:translateY(-2px);
+    box-shadow:0 6px 14px rgba(0,0,0,0.12);
+}
+
+#welcomeUser{
+    font-weight:bold;
+    color:white;
+    margin-right:8px;
+}
+
+.hero{
+    text-align:center;
+    padding:80px 20px;
+}
+
+#heroGreeting{
+    color:#0d47a1;
+    font-size:24px;
+    margin-bottom:10px;
+}
+
+.hero h1{
+    color:#0d47a1;
+    font-size:42px;
+}
+
+.hero p{
+    color:#444;
+    max-width:700px;
+    margin:auto;
+    line-height:1.6;
+}
+
+.hero-btn{
+    margin-top:25px;
+    padding:14px 30px;
+    border:none;
+    background:linear-gradient(to right,#1565c0,#0d47a1);
+    color:white;
+    border-radius:30px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.hero-btn:hover{
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 10px 22px rgba(13,71,161,0.28);
+    background:linear-gradient(to right,#1976d2,#0b3d91);
+}
+
+.features{
+    display:none;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+    padding:30px;
+}
+
+.card{
+    background:white;
+    width:230px;
+    padding:25px;
+    border-radius:14px;
+    text-align:center;
+    box-shadow:0px 5px 12px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+footer{
+    text-align:center;
+    padding:18px;
+    color:#555;
+}
+
+.dark-mode{
+    background:#121212;
+    color:white;
+}
+
+.dark-mode nav{
+    background:#000;
+}
+
+.dark-mode .card,
+.dark-mode .login-box,
+.dark-mode .note-card{
+    background:#1e1e1e;
+    color:white;
+    box-shadow:0 5px 15px rgba(255,255,255,0.05);
+}
+
+.dark-mode input,
+.dark-mode textarea,
+.dark-mode select{
+    background:#2b2b2b;
+    color:white;
+    border:1px solid #444;
+}
+
+.dark-mode h1,
+.dark-mode h2,
+.dark-mode h3,
+.dark-mode p,
+.dark-mode small,
+.dark-mode a{
+    color:white;
+}
+
+.dark-mode footer{
+    color:#ccc;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+
+    <div class="nav-left">
+        <h2>Student Helper Hub</h2>
+
+        <a href="index.html">Home</a>
+        <a href="notes.html">Notes</a>
+        <a href="links.html">Links</a>
+        <a href="doubts.html">Doubts</a>
+        <a href="mynotes.html">Mynotes</a>
+    </div>
+
+    <div class="nav-right">
+
+        <span id="welcomeUser"></span>
+        <button onclick="toggleTheme()" id="themeBtn">🌙 Dark</button>
+        <button id="loginBtn" onclick="window.location.href='auth/login.html'">
+            Login
+        </button>
+
+        <button id="signupBtn" onclick="window.location.href='auth/signup.html'">
+            Sign Up
+        </button>
+
+        <button id="logoutBtn" onclick="logoutUser()" style="display:none;">
+            Logout
+        </button>
+
+        <button id="profileBtn" onclick="window.location.href='auth/profile.html'" style="display:none;">
+            👤 Profile
+        </button>
+
+    </div>
+
+</nav>
+
+
+<section class="hero">
+
+    <h2 id="heroGreeting"></h2>
+
+    <h1>Learn Smarter with Student Helper Hub 🎓</h1>
+
+    <p>
+        One platform for semester notes, useful resources,
+        saved links, doubts and student productivity.
+    </p>
+
+    <button onclick="showFeatures()" class="hero-btn">
+        Explore Now
+    </button>
+
+</section>
+
+
+<section class="features" id="features">
+
+    <div class="card" onclick="location.href='notes/notes.html'">
+        <h3>📚 Notes</h3>
+        <p>Semester wise notes</p>
+    </div>
+
+    <div class="card" onclick="location.href='links/links.html'">
+        <h3>🔗 Links</h3>
+        <p>Useful learning resources</p>
+    </div>
+
+    <div class="card" onclick="location.href='doubts/doubts.html'">
+        <h3>💬 Doubts</h3>
+        <p>Ask and solve questions</p>
+    </div>
+
+    <div class="card" onclick="openMyNotes()">
+        <h3>📝 My Notes</h3>
+        <p>Private notes section</p>
+    </div>
+
+</section>
+<script src="auth/authe.js"></script>
+<footer>
+© 2026 Student Helper Hub
+</footer>
+
+</body>
+</html>

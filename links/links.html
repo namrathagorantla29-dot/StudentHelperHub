@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Links - Student Helper Hub</title>
+<script src="../js/main.js" defer></script>
+
+<style>
+
+/* Reset */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Body */
+body{
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#eef3f8,#dbe9ff);
+    min-height:100vh;
+}
+
+/* Navbar */
+nav{
+    background:#0d47a1;
+    color:white;
+    text-align:center;
+    padding:18px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+nav h2{
+    font-size:26px;
+}
+
+/* Main */
+.main{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+    padding:40px 0;
+}
+
+/* Heading */
+.heading{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.heading h1{
+    color:#0d47a1;
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.heading p{
+    color:#555;
+    font-size:17px;
+}
+
+/* Grid */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:22px;
+}
+
+/* Card */
+.card{
+    background:white;
+    border-radius:18px;
+    padding:28px 22px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 35px rgba(0,0,0,0.12);
+}
+
+.card h3{
+    color:#0d47a1;
+    margin-bottom:8px;
+    font-size:22px;
+}
+
+.card p{
+    color:#666;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.subject-card{
+    background:white;
+    border-radius:18px;
+    padding:28px 22px;
+    text-align:center;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.subject-card:hover{
+    transform:translateY(-8px);
+}
+
+.subject-card a{
+    display:inline-block;
+    margin-top:12px;
+    padding:10px 18px;
+    background:#1565c0;
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    position:relative;
+    z-index:999;
+}
+
+/* Active */
+.active{
+    background:#0d47a1;
+}
+
+.active h3,
+.active p{
+    color:white;
+}
+
+/* Resource Page */
+#resourcePage{
+    display:none;
+}
+
+/* Back Button */
+.back-btn{
+    background:#0d47a1;
+    color:white;
+    border:none;
+    padding:12px 24px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-bottom:25px;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#08306b;
+}
+
+/* Link Button */
+.open-btn{
+    display:inline-block;
+    padding:10px 18px;
+    background:#1565c0;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    text-decoration:none;
+    margin-top:10px;
+    position:relative;
+    z-index:9999;
+}
+
+.open-btn:hover{
+    background:#08306b;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:25px;
+    color:#666;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Navbar -->
+<nav>
+    <h2>Student Helper Hub</h2>
+</nav>
+
+<div class="main">
+
+<!-- Main Page -->
+<div id="linksMainPage">
+
+    <div class="heading">
+        <h1>Useful Links 🔗</h1>
+        <p>Find best playlists, tutorials and learning resources semester-wise</p>
+    </div>
+
+    <div class="grid">
+
+        <div class="card" onclick="showLinks(1,this)">
+            <h3>Semester 1</h3>
+            <p>C Programming & Python Resources</p>
+        </div>
+
+        <div class="card" onclick="showLinks(2,this)">
+            <h3>Semester 2</h3>
+            <p>DS & EEE Resources</p>
+        </div>
+
+        <div class="card" onclick="showLinks(3,this)">
+            <h3>Semester 3</h3>
+            <p>DAA & C++ Resources</p>
+        </div>
+
+        <div class="card" onclick="showLinks(4,this)">
+            <h3>Semester 4</h3>
+            <p>Web Dev & DBMS Resources</p>
+        </div>
+
+        <div class="card" onclick="showLinks(5,this)">
+            <h3>Semester 5</h3>
+            <p>OS, CN & Java Resources</p>
+        </div>
+
+        <div class="card" onclick="showLinks(6,this)">
+            <h3>Semester 6</h3>
+            <p>AI, Cloud & Security</p>
+        </div>
+
+        <div class="card" onclick="showLinks(7,this)">
+            <h3>⭐ My Saved Links</h3>
+            <p>Your personal saved resources</p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- Resource Page -->
+<div id="resourcePage">
+
+    <button class="back-btn" onclick="goBackLinks()">⬅ Back</button>
+
+    <div class="heading">
+        <h1 id="resourceTitle">Resources</h1>
+        <p>Choose a learning resource and start learning</p>
+    </div>
+
+    <div class="grid" id="resourceCards">
+
+    </div>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 Student Helper Hub
+</footer>
+
+<script src="authe.js"></script>
+
+<script>
+    requireLogin();
+</script>
+
+</body>
+</html>

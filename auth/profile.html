@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile | Student Helper Hub</title>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f5f7fb;
+    color: #222;
+    min-height: 100vh;
+    padding: 40px 20px;
+}
+
+
+/* =========================
+   PROFILE HEADER
+========================= */
+
+.profile-header {
+    max-width: 1000px;
+    margin: 0 auto 30px;
+
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+
+    display: flex;
+    align-items: center;
+    gap: 25px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #e8f1ff;
+
+    font-size: 50px;
+}
+
+.profile-info h1 {
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.profile-info p {
+    color: #777;
+    font-size: 16px;
+}
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+.profile-section {
+    max-width: 1000px;
+    margin: 0 auto 30px;
+}
+
+.profile-section h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+
+/* =========================
+   PROGRESS
+========================= */
+
+.progress-card {
+    background: white;
+    padding: 25px;
+
+    border-radius: 16px;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.progress-title {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+
+    background: #e5e7eb;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+}
+
+#overallProgressBar {
+    width: 0%;
+    height: 100%;
+
+    background: #4f8cff;
+
+    border-radius: 20px;
+
+    transition: width 0.5s ease;
+}
+
+
+/* =========================
+   STATISTICS
+========================= */
+
+.stats-container {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+
+    transition: transform 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 30px;
+}
+
+.stat-card h3 {
+    font-size: 28px;
+    margin: 10px 0 5px;
+}
+
+.stat-card p {
+    color: #777;
+}
+
+
+/* =========================
+   ACCOUNT DETAILS
+========================= */
+
+.account-card {
+    background: white;
+
+    border-radius: 16px;
+
+    padding: 10px 25px;
+
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+}
+
+.account-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 18px 0;
+
+    border-bottom: 1px solid #eee;
+}
+
+.account-row:last-child {
+    border-bottom: none;
+}
+
+.account-row span {
+    color: #777;
+}
+
+.verified {
+    color: #2e9d55;
+}
+
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media (max-width: 700px) {
+
+    body {
+        padding: 20px 15px;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .stats-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 450px) {
+
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+
+    .account-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+    <!-- PROFILE HEADER -->
+    <section class="profile-header">
+
+        <div class="profile-avatar">
+            👤
+        </div>
+
+        <div class="profile-info">
+            <h1 id="profileName">Student Name</h1>
+            <p id="profileEmail">student@email.com</p>
+        </div>
+
+    </section>
+
+
+    <!-- LEARNING PROGRESS -->
+    <section class="profile-section">
+
+        <h2>📚 Learning Progress</h2>
+
+        <div class="progress-card">
+
+            <div class="progress-title">
+                <span>Overall Progress</span>
+                <span id="overallProgress">0%</span>
+            </div>
+
+            <div class="progress-bar">
+                <div id="overallProgressBar"></div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- STATISTICS -->
+    <section class="profile-section">
+
+        <h2>📊 My Statistics</h2>
+
+        <div class="stats-container">
+
+            <div class="stat-card">
+                <span class="stat-icon">📚</span>
+                <h3 id="topicsCompleted">0</h3>
+                <p>Topics Completed</p>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">📝</span>
+                <h3 id="notesCreated">0</h3>
+                <p>Notes Created</p>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">🔖</span>
+                <h3 id="bookmarksCount">0</h3>
+                <p>Bookmarks</p>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">❓</span>
+                <h3 id="doubtsAsked">0</h3>
+                <p>Doubts Asked</p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACCOUNT DETAILS -->
+    <section class="profile-section">
+
+        <h2>👤 Account Details</h2>
+
+        <div class="account-card">
+
+            <div class="account-row">
+                <span>Name</span>
+                <strong id="accountName">Student Name</strong>
+            </div>
+
+            <div class="account-row">
+                <span>Email</span>
+                <strong id="accountEmail">student@email.com</strong>
+            </div>
+
+            <div class="account-row">
+                <span>Account Status</span>
+                <strong class="verified">✓ Verified</strong>
+            </div>
+
+        </div>
+
+    </section>
+
+    <script src="../notes/data_notes.js"></script>
+    <script src="profile.js"></script>
+
+</body>
+
+</html>

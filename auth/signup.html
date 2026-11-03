@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Signup - Student Helper Hub</title>
+
+<script src="signup.js" defer></script>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#eef3f8,#dbe9ff);
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.signup-box{
+    width:420px;
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1{
+    text-align:center;
+    color:#0d47a1;
+    margin-bottom:10px;
+}
+
+p{
+    text-align:center;
+    color:#666;
+    margin-bottom:25px;
+}
+
+input{
+    width:100%;
+    padding:14px;
+    margin-bottom:18px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:15px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#0d47a1;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#0d47a1;
+    color:white;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#08306b;
+}
+
+.bottom{
+    margin-top:20px;
+    text-align:center;
+}
+
+.bottom a{
+    color:#0d47a1;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+#signupMsg{
+    text-align:center;
+    margin-top:15px;
+    font-weight:bold;
+}
+
+.password-wrapper{
+    position:relative;
+    width:100%;
+}
+
+.password-wrapper input{
+    width:100%;
+    padding-right:70px;
+}
+
+.show-password{
+    position:absolute;
+    right:10px;
+    top:50%;
+    transform:translateY(-50%);
+
+    width:auto;
+
+    padding:5px 8px;
+
+    background:none;
+    color:#0d47a1;
+
+    font-size:13px;
+    font-weight:bold;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+<div class="signup-box">
+
+    <h1>Create Account 🚀</h1>
+
+    <p id="subtitle">
+        Verify your email to continue
+    </p>
+
+
+    <!-- ===================== -->
+    <!-- STEP 1: ENTER EMAIL -->
+    <!-- ===================== -->
+
+    <div id="emailStep">
+
+        <input
+            type="email"
+            id="signupEmail"
+            placeholder="Enter your email">
+
+        <button onclick="sendOTP()">
+            Send OTP 📧
+        </button>
+
+    </div>
+
+
+
+    <!-- ===================== -->
+    <!-- STEP 2: VERIFY OTP -->
+    <!-- ===================== -->
+
+    <div id="otpStep" style="display:none;">
+
+        <input
+            type="text"
+            id="otp"
+            placeholder="Enter 6-digit OTP"
+            maxlength="6">
+
+        <button onclick="verifyOTP()">
+            Verify OTP ✅
+        </button>
+
+    </div>
+
+
+
+    <!-- ===================== -->
+    <!-- STEP 3: CREATE ACCOUNT -->
+    <!-- ===================== -->
+
+    <div id="accountStep" style="display:none;">
+
+        <input
+            type="text"
+            id="name"
+            placeholder="Enter your name">
+
+        <div class="password-wrapper">
+
+        <input
+            type="password"
+            id="signupPassword"
+            placeholder="Create password">
+
+        <button
+            type="button"
+            class="show-password"
+            onclick="toggleSignupPassword()">
+
+            Show
+
+        </button>
+
+        </div>
+
+        <button onclick="signupUser()">
+            Create Account 🚀
+        </button>
+
+    </div>
+
+
+
+    <!-- MESSAGE -->
+
+    <div id="signupMsg"></div>
+
+
+
+    <!-- LOGIN LINK -->
+
+    <div class="bottom">
+
+        Already have an account?
+
+        <a href="login.html">
+            Login
+        </a>
+
+    </div>
+
+</div>
+
+
+</body>
+
+</html>

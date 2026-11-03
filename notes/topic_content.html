@@ -1,0 +1,2188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Student Helper Hub | Study Hub</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f4f7fb;
+
+    color:#333;
+
+    line-height:1.7;
+
+}
+
+
+/* ==========================
+   LINKS
+========================== */
+
+a{
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+
+/* ==========================
+   NAVBAR
+========================== */
+
+nav{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
+
+    background:#0d47a1;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 50px;
+
+    box-shadow:0 6px 20px rgba(0,0,0,.15);
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+}
+
+.nav-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.nav-right button{
+
+    background:white;
+
+    color:#0d47a1;
+
+    border:none;
+
+    outline:none;
+
+    padding:11px 22px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.nav-right button:hover{
+
+    background:#1565c0;
+
+    color:white;
+
+}
+
+
+/* ==========================
+   HERO
+========================== */
+
+.hero{
+
+    width:95%;
+
+    max-width:1400px;
+
+    margin:35px auto;
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:45px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:40px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.hero-left{
+
+    flex:1;
+
+}
+
+.hero-left h4{
+
+    color:#1565c0;
+
+    font-size:18px;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+}
+
+.hero-left h1{
+
+    color:#0d47a1;
+
+    font-size:42px;
+
+    margin-bottom:18px;
+
+}
+
+.hero-left p{
+
+    color:#666;
+
+    font-size:17px;
+
+    max-width:750px;
+
+}
+
+
+/* ==========================
+   HERO INFO
+========================== */
+
+.topic-info{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-top:30px;
+
+    flex-wrap:wrap;
+
+}
+
+.topic-info span{
+
+    background:#eef5ff;
+
+    color:#1565c0;
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+    font-size:14px;
+
+}
+
+
+/* ==========================
+   DIFFICULTY BADGES
+========================== */
+
+.beginner{
+
+    background:#e8f8ef !important;
+
+    color:#1b8d4b !important;
+
+}
+
+.intermediate{
+
+    background:#fff4d8 !important;
+
+    color:#cc8a00 !important;
+
+}
+
+.advanced{
+
+    background:#ffe4e4 !important;
+
+    color:#d32f2f !important;
+
+}
+
+
+/* ==========================
+   HERO BUTTONS
+========================== */
+
+.hero-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.hero-right button{
+
+    width:220px;
+
+    border:none;
+
+    cursor:pointer;
+
+    padding:15px;
+
+    border-radius:12px;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+#bookmarkBtn{
+
+    background:#ffc107;
+
+    color:#222;
+
+}
+
+#bookmarkBtn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 18px rgba(0,0,0,.18);
+
+}
+
+#completeBtn{
+
+    background:#1565c0;
+
+    color:white;
+
+}
+
+#completeBtn:hover{
+
+    background:#0d47a1;
+
+    transform:translateY(-3px);
+
+}
+
+
+/* ==========================
+   MAIN LAYOUT
+========================== */
+
+.container{
+
+    width:95%;
+
+    max-width:1450px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:250px 1fr 250px;
+
+    gap:28px;
+
+    align-items:start;
+
+}
+
+
+/* ==========================
+   LEFT SIDEBAR
+========================== */
+
+.sidebar{
+
+    position:sticky;
+
+    top:90px;
+
+    height: calc(100vh - 130px);
+
+    overflow-y: auto;
+
+    overflow-x: hidden;
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    scrollbar-width:thin;
+
+}
+
+.sidebar h3{
+
+    color:#0d47a1;
+
+    margin-bottom:18px;
+
+    font-size:22px;
+
+}
+
+.sidebar ul{
+
+    list-style:none;
+
+}
+
+.sidebar li{
+
+    margin-bottom:12px;
+
+}
+
+.sidebar a{
+
+    display:block;
+
+    padding:12px 15px;
+
+    border-radius:10px;
+
+    color:#444;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.sidebar a:hover{
+
+    background:#1565c0;
+
+    color:white;
+
+    padding-left:22px;
+
+}
+
+
+/* ==========================
+   RIGHT PANEL
+========================== */
+
+.rightPanel{
+
+    position:sticky;
+
+    top:100px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.infoCard{
+
+    background:white;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    text-align:center;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+}
+
+.infoCard h3{
+
+    color:#0d47a1;
+
+    margin-bottom:12px;
+
+}
+
+.infoCard p{
+
+    color:#666;
+
+    font-size:15px;
+
+}
+
+.infoCard button{
+
+    width:100%;
+
+    margin-top:10px;
+
+    padding:12px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    background:#1565c0;
+
+    color:white;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.infoCard button:hover{
+
+    background:#0d47a1;
+
+}
+
+.content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+}
+
+
+/* ==========================
+   CONTENT CARDS
+========================== */
+
+.card{
+
+    background:white;
+
+    border-radius:20px;
+
+    padding:35px;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    border-left:6px solid #1565c0;
+
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 18px 35px rgba(0,0,0,.12);
+
+}
+
+.card h2{
+
+    color:#0d47a1;
+
+    margin-bottom:20px;
+
+    font-size:30px;
+
+}
+
+.card p{
+
+    color:#555;
+
+    font-size:17px;
+
+    text-align:justify;
+
+    line-height:1.9;
+
+}
+
+
+/* ==========================
+   LISTS
+========================== */
+
+.card ul{
+
+    margin-top:15px;
+
+    padding-left:28px;
+
+}
+
+.card ul li{
+
+    margin-bottom:12px;
+
+    color:#444;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+}
+
+
+/* ==========================
+   ORDERED LIST
+========================== */
+
+.card ol{
+
+    margin-top:15px;
+
+    padding-left:28px;
+
+}
+
+.card ol li{
+
+    margin-bottom:12px;
+
+    font-size:17px;
+
+}
+
+
+/* ==========================
+   TABLES
+========================== */
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+}
+
+table th{
+
+    background:#1565c0;
+
+    color:white;
+
+    padding:15px;
+
+    text-align:left;
+
+}
+
+table td{
+
+    padding:15px;
+
+    border:1px solid #ddd;
+
+}
+
+table tr:nth-child(even){
+
+    background:#f8fbff;
+
+}
+
+
+/* ==========================
+   CODE BLOCK
+========================== */
+
+pre{
+
+    background:#1e1e1e;
+
+    color:#ffffff;
+
+    padding:25px;
+
+    border-radius:15px;
+
+    overflow:auto;
+
+    margin-top:20px;
+
+    font-size:15px;
+
+    line-height:1.8;
+
+}
+
+code{
+
+    font-family:Consolas,monospace;
+
+}
+
+
+/* ==========================
+   INLINE CODE
+========================== */
+
+p code{
+
+    background:#eef5ff;
+
+    color:#1565c0;
+
+    padding:3px 8px;
+
+    border-radius:6px;
+
+    font-size:15px;
+
+}
+
+
+/* ==========================
+   COPY BUTTON
+========================== */
+
+.copy-btn{
+
+    float:right;
+
+    margin-bottom:15px;
+
+    background:#1565c0;
+
+    color:white;
+
+    border:none;
+
+    padding:10px 18px;
+
+    border-radius:8px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.copy-btn:hover{
+
+    background:#0d47a1;
+
+}
+
+
+/* ==========================
+   NOTE BOX
+========================== */
+
+.note{
+
+    background:#e8f5e9;
+
+    border-left:6px solid #43a047;
+
+    padding:20px;
+
+    border-radius:10px;
+
+    margin-top:20px;
+
+}
+
+.note h4{
+
+    color:#2e7d32;
+
+    margin-bottom:10px;
+
+}
+
+.note p{
+
+    color:#2f4f2f;
+
+}
+
+
+/* ==========================
+   TIP BOX
+========================== */
+
+.tip{
+
+    background:#e3f2fd;
+
+    border-left:6px solid #1976d2;
+
+    padding:20px;
+
+    border-radius:10px;
+
+    margin-top:20px;
+
+}
+
+.tip h4{
+
+    color:#1565c0;
+
+    margin-bottom:10px;
+
+}
+
+
+/* ==========================
+   WARNING BOX
+========================== */
+
+.warning{
+
+    background:#fff8e1;
+
+    border-left:6px solid #ff9800;
+
+    padding:20px;
+
+    border-radius:10px;
+
+    margin-top:20px;
+
+}
+
+.warning h4{
+
+    color:#ef6c00;
+
+    margin-bottom:10px;
+
+}
+
+
+/* ==========================
+   IMPORTANT BOX
+========================== */
+
+.important{
+
+    background:#ffebee;
+
+    border-left:6px solid #e53935;
+
+    padding:20px;
+
+    border-radius:10px;
+
+    margin-top:20px;
+
+}
+
+.important h4{
+
+    color:#c62828;
+
+    margin-bottom:10px;
+
+}
+
+
+/* ==========================
+   INTERVIEW QUESTIONS
+========================== */
+
+#interviewQuestions{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.question{
+
+    background:#f8fbff;
+
+    border-left:5px solid #1565c0;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    transition:.3s;
+
+}
+
+.question:hover{
+
+    background:#eef5ff;
+
+}
+
+
+/* ==========================
+   PRACTICE QUESTIONS
+========================== */
+
+#practiceQuestions{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.practice{
+
+    background:#fafafa;
+
+    border-left:5px solid #43a047;
+
+    padding:18px;
+
+    border-radius:12px;
+
+}
+
+
+/* ==========================
+   BUTTONS
+========================== */
+
+.primaryBtn{
+
+    background:#1565c0;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 25px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.primaryBtn:hover{
+
+    background:#0d47a1;
+
+}
+
+.secondaryBtn{
+
+    background:white;
+
+    color:#1565c0;
+
+    border:2px solid #1565c0;
+
+    padding:14px 25px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.secondaryBtn:hover{
+
+    background:#1565c0;
+
+    color:white;
+
+}
+
+
+/* ==========================
+   PROGRESS BAR
+========================== */
+
+.progressBar{
+
+    width:100%;
+
+    height:14px;
+
+    background:#dfe6ef;
+
+    border-radius:20px;
+
+    overflow: hidden;
+
+    margin-top:12px;
+
+}
+
+.progress{
+
+    width:0%;
+
+    height:100%;
+
+    background:#1565c0;
+
+    border-radius:20px;
+
+     transition:.5s;
+
+}
+
+
+/* ==========================
+   HORIZONTAL LINE
+========================== */
+
+hr{
+
+    border:none;
+
+    border-top:1px solid #ddd;
+
+    margin:30px 0;
+
+}
+
+footer{
+
+    margin-top:50px;
+
+    background:#0d47a1;
+
+    color:white;
+
+    text-align:center;
+
+    padding:25px;
+
+    font-size:15px;
+
+    letter-spacing:.5px;
+
+}
+
+
+/* ==========================
+   SECTION SPACING
+========================== */
+
+section{
+
+    scroll-margin-top:110px;
+
+}
+
+
+/* ==========================
+   IMAGES
+========================== */
+
+img{
+
+    max-width:100%;
+
+    border-radius:12px;
+
+}
+
+
+/* ==========================
+   BLOCKQUOTE
+========================== */
+
+blockquote{
+
+    margin-top:20px;
+
+    padding:20px;
+
+    border-left:5px solid #1565c0;
+
+    background:#eef5ff;
+
+    font-style:italic;
+
+    color:#444;
+
+}
+
+
+/* ==========================
+   ACTIVE SIDEBAR LINK
+========================== */
+
+.sidebar a.active{
+
+    background:#1565c0;
+
+    color:white;
+
+    font-weight:600;
+
+}
+
+
+/* ==========================
+   SCROLLBAR
+========================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#eef2f7;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#1565c0;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:#0d47a1;
+
+}
+
+
+/* ==========================
+   SELECTION
+========================== */
+
+::selection{
+
+    background:#1565c0;
+
+    color:white;
+
+}
+
+
+/* ==========================
+   ANIMATIONS
+========================== */
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.card{
+
+    animation:fadeUp .5s ease;
+
+}
+
+
+/* ==========================
+   HOVER EFFECTS
+========================== */
+
+.card:hover h2{
+
+    color:#1565c0;
+
+}
+
+.sidebar a{
+
+    transition:all .3s;
+
+}
+
+button{
+
+    transition:all .3s;
+
+}
+
+button:hover{
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ==========================
+   FOCUS
+========================== */
+
+button:focus,
+a:focus{
+
+    outline:3px solid rgba(21,101,192,.3);
+
+    outline-offset:3px;
+
+}
+
+
+/* ==========================
+   RESPONSIVE - TABLET
+========================== */
+
+@media(max-width:1100px){
+
+.container{
+
+    grid-template-columns:220px 1fr;
+
+}
+
+.rightPanel{
+
+    display:none;
+
+}
+
+.hero{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+}
+
+.hero-right{
+
+    width:100%;
+
+    flex-direction:row;
+
+    flex-wrap:wrap;
+
+}
+
+.hero-right button{
+
+    flex:1;
+
+    min-width:180px;
+
+}
+
+}
+
+
+/* ==========================
+   RESPONSIVE - MOBILE
+========================== */
+
+@media(max-width:768px){
+
+nav{
+
+    padding:15px 20px;
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+.logo{
+
+    font-size:24px;
+
+}
+
+.hero{
+
+    width:95%;
+
+    padding:25px;
+
+}
+
+.hero-left h1{
+
+    font-size:30px;
+
+}
+
+.hero-left p{
+
+    font-size:15px;
+
+}
+
+.topic-info{
+
+    gap:10px;
+
+}
+
+.container{
+
+    grid-template-columns:1fr;
+
+}
+
+.sidebar{
+
+    position:relative;
+
+    top:0;
+
+}
+
+.rightPanel{
+
+    display:none;
+
+}
+
+.card{
+
+    padding:22px;
+
+}
+
+.card h2{
+
+    font-size:24px;
+
+}
+
+pre{
+
+    padding:18px;
+
+    font-size:13px;
+
+}
+
+table{
+
+    display:block;
+
+    overflow-x:auto;
+
+}
+
+footer{
+
+    font-size:14px;
+
+}
+
+}
+
+
+/* ==========================
+   SMALL MOBILE
+========================== */
+
+@media(max-width:480px){
+
+.hero-left h1{
+
+    font-size:24px;
+
+}
+
+.hero-left h4{
+
+    font-size:16px;
+
+}
+
+.topic-info span{
+
+    width:100%;
+
+    text-align:center;
+
+}
+
+.hero-right{
+
+    flex-direction:column;
+
+}
+
+.hero-right button{
+
+    width:100%;
+
+}
+
+.card{
+
+    padding:18px;
+
+}
+
+.card h2{
+
+    font-size:22px;
+
+}
+
+}
+
+
+/* ==========================
+   PRINT STYLE
+========================== */
+
+@media print{
+
+nav,
+.sidebar,
+.rightPanel,
+.hero-right,
+footer{
+
+    display:none;
+
+}
+
+body{
+
+    background:white;
+
+}
+
+.container{
+
+    display:block;
+
+}
+
+.card{
+
+    box-shadow:none;
+
+    border:1px solid #ccc;
+
+    margin-bottom:20px;
+
+    break-inside:avoid;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- ====================================== -->
+<!-- NAVBAR -->
+<!-- ====================================== -->
+
+<nav>
+
+<div class="logo">
+
+📚 Student Helper Hub
+
+</div>
+
+<div class="nav-right">
+
+<button onclick="goBack()">
+
+← Back
+
+</button>
+
+</div>
+
+</nav>
+
+
+<!-- ====================================== -->
+<!-- HERO SECTION -->
+<!-- ====================================== -->
+
+<section class="hero">
+
+<div class="hero-left">
+
+<h4 id="subjectName">
+
+Programming in C
+
+</h4>
+
+<h1 id="topicTitle">
+
+Introduction to C Programming
+
+</h1>
+
+<p id="topicDescription">
+
+Learn the fundamentals of C Programming,
+its history,
+features,
+applications,
+and why it remains one of the most important programming languages.
+
+</p>
+
+<div class="topic-info">
+
+<span
+id="difficultyBadge"
+class="difficulty beginner">
+
+🟢 Beginner
+
+</span>
+
+<span id="readingTime">
+
+⏱ 8 mins
+
+</span>
+
+</div>
+
+</div>
+
+<div class="hero-right">
+
+<button id="bookmarkBtn">
+
+⭐ Bookmark
+
+</button>
+
+<button id="completeBtn">
+
+✔ Mark Complete
+
+</button>
+
+<button
+    class="interview-btn"
+    onclick="openInterview()">
+
+    <i class="fa-solid fa-user-tie"></i>
+
+    Interview Questions
+
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ====================================== -->
+<!-- MAIN CONTAINER -->
+<!-- ====================================== -->
+
+<div class="container">
+
+
+<!-- ====================================== -->
+<!-- SIDEBAR -->
+<!-- ====================================== -->
+
+<aside class="sidebar">
+
+<h3>Contents</h3>
+<ul>
+
+<li>
+
+<a href="#overview">Overview</a>
+
+</li>
+
+<li>
+
+<a href="#definition">Definition</a>
+
+</li>
+
+<li>
+
+<a href="#features">Key Features</a>
+
+</li>
+
+<li>
+
+<a href="#syntax">Syntax</a>
+
+</li>
+
+<li>
+
+<a href="#example">Example</a>
+
+</li>
+
+<li>
+
+<a href="#applications">Applications</a>
+
+</li>
+
+<li>
+
+<a href="#advantages">Advantages</a>
+
+</li>
+
+<li>
+
+<a href="#disadvantages">Disadvantages</a>
+
+</li>
+
+<li>
+
+<a href="#interview">Interview Questions</a>
+
+</li>
+
+<li>
+
+<a href="#practice">Practice Questions</a>
+
+</li>
+
+<li>
+
+<a href="#summary">Summary</a>
+
+</li>
+
+<li>
+
+<a href="#note">Quick Note</a>
+
+</li>
+
+<li>
+
+<a href="#tip">Tip</a>
+
+</li>
+
+<li>
+
+<a href="#warning">Warning</a>
+
+</li>
+
+<li>
+
+<a href="#important">Important</a>
+
+</li>
+
+</ul>
+
+</aside>
+
+<!-- ====================================== -->
+<!-- CONTENT -->
+<!-- ====================================== -->
+
+<main class="content">
+
+<section
+id="overview"
+class="card">
+
+<h2>
+
+📖 Overview
+
+</h2>
+
+<p id="overviewText">
+
+Content will be loaded dynamically
+from data_content.js
+
+</p>
+
+</section>
+
+
+
+<section
+id="definition"
+class="card">
+
+<h2>
+
+📘 Definition
+
+</h2>
+
+<p id="definitionText">
+
+Definition comes here...
+
+</p>
+
+</section>
+
+
+
+<section
+id="features"
+class="card">
+
+<h2>
+
+✨ Key Features
+
+</h2>
+
+<ul id="featuresList">
+
+<li>
+
+Fast Execution
+
+</li>
+
+<li>
+
+Portable
+
+</li>
+
+<li>
+
+Structured Programming
+
+</li>
+
+<li>
+
+Efficient Memory Usage
+
+</li>
+
+</ul>
+
+</section>
+
+
+<section
+id="syntax"
+class="card">
+
+<h2>
+
+💻 Syntax
+
+</h2>
+
+<button class="copy-btn">
+📋 Copy
+</button>
+
+<pre>
+
+<code id="syntaxCode">
+
+#include<stdio.h>
+
+int main(){
+
+printf("Hello World");
+
+return 0;
+
+}
+
+</code>
+
+</pre>
+
+</section>
+
+
+
+<section
+id="example"
+class="card">
+
+<h2>
+
+🚀 Example
+
+</h2>
+
+<button class="copy-btn">
+📋 Copy
+</button>
+
+<pre>
+
+<code id="exampleCode">
+
+#include<stdio.h>
+
+int main(){
+
+printf("Welcome");
+
+return 0;
+
+}
+
+</code>
+
+</pre>
+
+</section>
+
+
+
+<section
+id="applications"
+class="card">
+
+<h2>
+
+🌍 Applications
+
+</h2>
+
+<ul id="applicationsList">
+
+<li>
+
+Operating Systems
+
+</li>
+
+<li>
+
+Embedded Systems
+
+</li>
+
+<li>
+
+Compilers
+
+</li>
+
+</ul>
+
+</section>
+
+
+
+<section
+id="advantages"
+class="card">
+
+<h2>
+
+⭐ Advantages
+
+</h2>
+
+<ul id="advantagesList">
+
+<li>
+
+Simple
+
+</li>
+
+<li>
+
+Fast
+
+</li>
+
+<li>
+
+Portable
+
+</li>
+
+</ul>
+
+</section>
+
+<section
+id="disadvantages"
+class="card">
+
+<h2>
+
+❌ Disadvantages
+
+</h2>
+
+<ul id="disadvantagesList">
+
+</ul>
+
+</section>
+
+<section
+id="interview"
+class="card">
+
+<h2>
+
+🎯 Interview Questions
+
+</h2>
+
+<div id="interviewQuestions">
+
+<p>
+
+Questions will load here...
+
+</p>
+
+</div>
+
+</section>
+
+<section
+id="practice"
+class="card">
+
+<h2>
+
+📝 Practice Questions
+
+</h2>
+
+<div id="practiceQuestions">
+
+<p>
+
+Practice Questions...
+
+</p>
+
+</div>
+
+</section>
+
+<section
+id="summary"
+class="card">
+
+<h2>
+
+📌 Summary
+
+</h2>
+
+<p id="summaryText">
+
+Summary comes here...
+
+</p>
+
+</section>
+
+<div id="note" class="card">
+
+<h4>
+
+💡 Quick Note
+
+</h4>
+
+<p id="noteText">
+
+Important note will appear here.
+
+</p>
+
+</div>
+
+<div id="tip" class="card">
+
+<h4>
+
+🚀 Tip
+
+</h4>
+
+<p id="tipText">
+
+Study tip...
+
+</p>
+
+</div>
+
+<div id="warning" class="card">
+
+<h4>
+
+⚠ Warning
+
+</h4>
+
+<p id="warningText">
+
+Warning...
+
+</p>
+
+</div>
+
+<div id="important" class="card">
+
+<h4>
+
+⭐ Important
+
+</h4>
+
+<p id="importantText">
+
+Important concept...
+
+</p>
+
+</div>
+
+</main>
+
+<!-- ====================================== -->
+<!-- RIGHT PANEL -->
+<!-- ====================================== -->
+
+<aside class="rightPanel">
+
+<div class="infoCard">
+
+<h3>
+
+Reading Time
+
+</h3>
+
+<p id="readingTimeCard">
+
+8 Minutes
+
+</p>
+
+</div>
+
+<div class="infoCard">
+
+<h3>
+
+Difficulty
+
+</h3>
+
+<p id="difficultyCard">
+
+🟢 Beginner
+
+</p>
+
+</div>
+
+<div class="infoCard">
+
+<h3>
+
+Progress
+
+</h3>
+
+<div class="progressBar">
+
+<div
+class="progress"
+id="progressFill">
+
+</div>
+
+</div>
+
+</div>
+
+<div class="infoCard">
+
+<button id="previousBtn">
+
+⬅ Previous
+
+</button>
+
+<button id="nextBtn">
+
+Next ➜
+
+</button>
+
+</div>
+
+</aside>
+
+</div>
+
+
+<!-- ====================================== -->
+<!-- FOOTER -->
+<!-- ====================================== -->
+
+<footer>
+
+<h3>
+
+📚 Student Helper Hub
+
+</h3>
+
+<p>
+
+Empowering Students to Learn Smarter, Faster, and Better.
+
+</p>
+
+<p>
+
+© 2026 Student Helper Hub | Designed & Developed with ❤️
+
+</p>
+
+</footer>
+
+<script src="data_notes.js"></script>
+<script src="data_content.js"></script>
+<script src="topic_content.js"></script>
+
+</body>
+
+</html>

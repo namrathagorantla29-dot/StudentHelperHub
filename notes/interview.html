@@ -1,0 +1,1380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Interview Questions | Student Helper Hub
+</title>
+
+
+<!-- =====================================================
+     FONT AWESOME
+===================================================== -->
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+
+<!-- =====================================================
+     INTERVIEW PAGE CSS
+===================================================== -->
+
+<style>
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+body{
+
+    font-family:
+        "Inter",
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:#f5f7fb;
+
+    color:#172033;
+
+    min-height:100vh;
+
+}
+
+
+/* ==========================================================
+   NAVIGATION BAR
+========================================================== */
+
+.navbar{
+
+    height:78px;
+
+    padding:0 6%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    background:rgba(255,255,255,.94);
+
+    border-bottom:
+        1px solid rgba(15,23,42,.08);
+
+    box-shadow:
+        0 5px 25px rgba(15,23,42,.06);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+}
+
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:21px;
+
+    font-weight:750;
+
+    color:#172033;
+
+}
+
+
+.logo i{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:13px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:19px;
+
+    box-shadow:
+        0 8px 20px rgba(37,99,235,.25);
+
+}
+
+
+.nav-actions{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+.back-btn{
+
+    border:none;
+
+    padding:11px 18px;
+
+    border-radius:12px;
+
+    background:#f1f5f9;
+
+    color:#334155;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    transition:.3s ease;
+
+}
+
+
+.back-btn:hover{
+
+    background:#e2e8f0;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ==========================================================
+   MAIN CONTAINER
+========================================================== */
+
+.interview-page{
+
+    width:min(1180px,92%);
+
+    margin:0 auto;
+
+    padding:45px 0 80px;
+
+}
+
+
+/* ==========================================================
+   HERO SECTION
+========================================================== */
+
+.interview-hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+    padding:42px;
+
+    border-radius:28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #172554,
+            #1d4ed8
+        );
+
+    color:white;
+
+    box-shadow:
+        0 22px 55px rgba(37,99,235,.20);
+
+    margin-bottom:28px;
+
+}
+
+
+.interview-hero::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+
+    height:300px;
+
+    right:-100px;
+
+    top:-140px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.08);
+
+}
+
+
+.interview-hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+
+    height:180px;
+
+    left:42%;
+
+    bottom:-120px;
+
+    border-radius:50%;
+
+    background:
+        rgba(255,255,255,.06);
+
+}
+
+
+.hero-icon{
+
+    position:relative;
+
+    z-index:2;
+
+    min-width:82px;
+
+    height:82px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:24px;
+
+    background:
+        rgba(255,255,255,.15);
+
+    border:
+        1px solid rgba(255,255,255,.20);
+
+    backdrop-filter:blur(15px);
+
+    -webkit-backdrop-filter:blur(15px);
+
+    font-size:34px;
+
+}
+
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+}
+
+
+.hero-label{
+
+    display:inline-block;
+
+    margin-bottom:10px;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:1.5px;
+
+    opacity:.75;
+
+}
+
+
+.hero-content h1{
+
+    font-size:36px;
+
+    line-height:1.2;
+
+    margin-bottom:8px;
+
+    font-weight:750;
+
+}
+
+
+#topicTitle{
+
+    font-size:18px;
+
+    font-weight:600;
+
+    margin-bottom:12px;
+
+    opacity:.92;
+
+}
+
+
+.hero-description{
+
+    max-width:720px;
+
+    font-size:15px;
+
+    line-height:1.7;
+
+    color:rgba(255,255,255,.78);
+
+}
+
+
+/* ==========================================================
+   INFORMATION CARDS
+========================================================== */
+
+.interview-info{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+
+    margin-bottom:42px;
+
+}
+
+
+.info-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:20px;
+
+    background:white;
+
+    border-radius:20px;
+
+    border:
+        1px solid rgba(15,23,42,.07);
+
+    box-shadow:
+        0 10px 30px rgba(15,23,42,.06);
+
+}
+
+
+.info-icon{
+
+    width:46px;
+
+    height:46px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+    font-size:18px;
+
+}
+
+
+.info-item span{
+
+    display:block;
+
+    color:#64748b;
+
+    font-size:12px;
+
+    margin-bottom:4px;
+
+}
+
+
+.info-item strong{
+
+    font-size:17px;
+
+    color:#172033;
+
+}
+
+
+/* ==========================================================
+   SECTION HEADING
+========================================================== */
+
+.section-heading{
+
+    margin-bottom:22px;
+
+}
+
+
+.section-heading span{
+
+    font-size:12px;
+
+    font-weight:750;
+
+    letter-spacing:1.5px;
+
+    color:#2563eb;
+
+}
+
+
+.section-heading h2{
+
+    font-size:28px;
+
+    margin:6px 0 7px;
+
+    color:#172033;
+
+}
+
+
+.section-heading p{
+
+    color:#64748b;
+
+    font-size:15px;
+
+    line-height:1.6;
+
+}
+
+
+/* ==========================================================
+   QUESTION CONTAINER
+========================================================== */
+
+.questions-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+
+/* ==========================================================
+   QUESTION CARD
+========================================================== */
+
+.question-card{
+
+    background:white;
+
+    border:
+        1px solid rgba(15,23,42,.07);
+
+    border-radius:22px;
+
+    padding:25px;
+
+    box-shadow:
+        0 10px 30px rgba(15,23,42,.055);
+
+    transition:.3s ease;
+
+}
+
+
+.question-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 16px 38px rgba(15,23,42,.09);
+
+}
+
+
+.question-top{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:18px;
+
+}
+
+
+.question-number{
+
+    width:42px;
+
+    height:42px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:12px;
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+    font-size:14px;
+
+    font-weight:750;
+
+}
+
+
+.question-content{
+
+    flex:1;
+
+}
+
+
+.question-text{
+
+    font-size:17px;
+
+    line-height:1.6;
+
+    color:#172033;
+
+    font-weight:650;
+
+}
+
+
+/* ==========================================================
+   SHOW ANSWER BUTTON
+========================================================== */
+
+.show-answer-btn{
+
+    margin-top:20px;
+
+    padding:11px 17px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#eff6ff;
+
+    color:#2563eb;
+
+    font-size:14px;
+
+    font-weight:650;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    transition:.3s ease;
+
+}
+
+
+.show-answer-btn:hover{
+
+    background:#dbeafe;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ==========================================================
+   ANSWER BOX
+========================================================== */
+
+.answer-box{
+
+    margin-top:18px;
+
+    padding:18px 20px;
+
+    border-radius:15px;
+
+    background:#f8fafc;
+
+    border-left:
+        4px solid #2563eb;
+
+    color:#475569;
+
+    font-size:15px;
+
+    line-height:1.75;
+
+    animation:
+        answerReveal .3s ease;
+
+}
+
+
+@keyframes answerReveal{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(-6px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+
+/* ==========================================================
+   COMPLETION CARD
+========================================================== */
+
+.completion-card{
+
+    margin-top:45px;
+
+    padding:45px 30px;
+
+    text-align:center;
+
+    background:white;
+
+    border-radius:25px;
+
+    border:
+        1px solid rgba(15,23,42,.07);
+
+    box-shadow:
+        0 15px 40px rgba(15,23,42,.07);
+
+}
+
+
+.completion-icon{
+
+    width:70px;
+
+    height:70px;
+
+    margin:0 auto 18px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:20px;
+
+    background:#fef3c7;
+
+    color:#d97706;
+
+    font-size:28px;
+
+}
+
+
+.completion-card h2{
+
+    font-size:25px;
+
+    margin-bottom:10px;
+
+    color:#172033;
+
+}
+
+
+.completion-card p{
+
+    max-width:550px;
+
+    margin:0 auto 22px;
+
+    color:#64748b;
+
+    line-height:1.7;
+
+    font-size:15px;
+
+}
+
+
+.topic-btn{
+
+    border:none;
+
+    padding:12px 20px;
+
+    border-radius:13px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:14px;
+
+    font-weight:650;
+
+    cursor:pointer;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:9px;
+
+    transition:.3s ease;
+
+    box-shadow:
+        0 8px 20px rgba(37,99,235,.22);
+
+}
+
+
+.topic-btn:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+}
+
+
+/* ==========================================================
+   FOOTER
+========================================================== */
+
+.footer{
+
+    background:#111827;
+
+    color:white;
+
+    padding:40px 6% 25px;
+
+}
+
+
+.footer-content{
+
+    max-width:1180px;
+
+    margin:auto;
+
+}
+
+
+.footer h3{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:18px;
+
+    margin-bottom:10px;
+
+}
+
+
+.footer h3 i{
+
+    color:#60a5fa;
+
+}
+
+
+.footer p{
+
+    color:#94a3b8;
+
+    font-size:14px;
+
+    line-height:1.6;
+
+    margin-bottom:25px;
+
+}
+
+
+.footer-bottom{
+
+    padding-top:20px;
+
+    border-top:
+        1px solid rgba(255,255,255,.08);
+
+    color:#64748b;
+
+    font-size:13px;
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@media(max-width:800px){
+
+    .interview-hero{
+
+        padding:30px;
+
+        gap:20px;
+
+    }
+
+
+    .hero-content h1{
+
+        font-size:29px;
+
+    }
+
+
+    .interview-info{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .navbar{
+
+        padding:0 4%;
+
+        height:70px;
+
+    }
+
+
+    .logo span{
+
+        display:none;
+
+    }
+
+
+    .interview-page{
+
+        width:92%;
+
+        padding-top:25px;
+
+    }
+
+
+    .interview-hero{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        padding:27px;
+
+        border-radius:22px;
+
+    }
+
+
+    .hero-icon{
+
+        width:65px;
+
+        min-width:65px;
+
+        height:65px;
+
+        font-size:27px;
+
+        border-radius:18px;
+
+    }
+
+
+    .hero-content h1{
+
+        font-size:26px;
+
+    }
+
+
+    .hero-description{
+
+        font-size:14px;
+
+    }
+
+
+    .question-card{
+
+        padding:20px;
+
+        border-radius:18px;
+
+    }
+
+
+    .question-top{
+
+        gap:12px;
+
+    }
+
+
+    .question-text{
+
+        font-size:15px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVIGATION BAR
+===================================================== -->
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+<span>
+
+Student Helper Hub
+
+</span>
+
+</div>
+
+
+<div class="nav-actions">
+
+<button
+class="back-btn"
+onclick="history.back()">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Back
+
+</button>
+
+</div>
+
+</nav>
+
+</header>
+
+
+
+<!-- =====================================================
+     MAIN CONTENT
+===================================================== -->
+
+<main class="interview-page">
+
+
+<!-- =====================================================
+     HERO SECTION
+===================================================== -->
+
+<section class="interview-hero">
+
+
+<div class="hero-icon">
+
+<i class="fa-solid fa-user-tie"></i>
+
+</div>
+
+
+<div class="hero-content">
+
+<span class="hero-label">
+
+INTERVIEW PREPARATION
+
+</span>
+
+
+<h1 id="subjectTitle">
+
+Interview Questions
+
+</h1>
+
+
+<p id="topicTitle">
+
+Loading topic...
+
+</p>
+
+
+<p class="hero-description">
+
+Test your understanding with commonly asked
+interview and viva questions. Think about
+your answer first, then reveal the solution.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     INFORMATION BAR
+===================================================== -->
+
+<section class="interview-info">
+
+
+<div class="info-item">
+
+<div class="info-icon">
+
+<i class="fa-solid fa-list-check"></i>
+
+</div>
+
+<div>
+
+<span>
+
+Questions
+
+</span>
+
+<strong id="questionCount">
+
+0
+
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="info-item">
+
+<div class="info-icon">
+
+<i class="fa-solid fa-eye"></i>
+
+</div>
+
+<div>
+
+<span>
+
+Revealed
+
+</span>
+
+<strong id="revealedCount">
+
+0
+
+</strong>
+
+</div>
+
+</div>
+
+
+<div class="info-item">
+
+<div class="info-icon">
+
+<i class="fa-solid fa-lightbulb"></i>
+
+</div>
+
+<div>
+
+<span>
+
+Mode
+
+</span>
+
+<strong>
+
+Self Practice
+
+</strong>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     QUESTIONS
+===================================================== -->
+
+<section class="questions-section">
+
+
+<div class="section-heading">
+
+<span>
+
+PRACTICE
+
+</span>
+
+
+<h2>
+
+Interview Questions
+
+</h2>
+
+
+<p>
+
+Try answering each question yourself before
+revealing the answer.
+
+</p>
+
+</div>
+
+
+<!-- QUESTIONS GENERATED BY JAVASCRIPT -->
+
+<div
+id="questionsContainer"
+class="questions-container">
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     COMPLETION
+===================================================== -->
+
+<section
+id="completionCard"
+class="completion-card">
+
+
+<div class="completion-icon">
+
+<i class="fa-solid fa-trophy"></i>
+
+</div>
+
+
+<h2>
+
+Interview Practice Completed!
+
+</h2>
+
+
+<p>
+
+Great work! You've gone through all the
+interview questions for this topic.
+
+</p>
+
+
+<button
+onclick="goBackToTopic()"
+class="topic-btn">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Back to Topic
+
+</button>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+
+<div class="footer-content">
+
+
+<h3>
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+Student Helper Hub
+
+</h3>
+
+
+<p>
+
+Learn smarter. Practice better.
+Become industry ready.
+
+</p>
+
+
+<div class="footer-bottom">
+
+© 2026 Student Helper Hub.
+All Rights Reserved.
+
+</div>
+
+
+</div>
+
+</footer>
+
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script src="data_notes.js"></script>
+
+<script src="data_content.js"></script>
+
+<script src="interview.js"></script>
+
+</body>
+
+</html>

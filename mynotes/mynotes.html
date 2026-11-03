@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Notes - Student Helper Hub</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="../js/main.js" defer></script>
+<script src="mynotes.js" defer></script>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(to right,#eef2f3,#d9e4f5);
+}
+
+nav{
+    background:#0d47a1;
+    color:white;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav button{
+    border:none;
+    padding:10px 16px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:30px 20px;
+}
+
+.card{
+    background:white;
+    padding:25px;
+    border-radius:14px;
+    box-shadow:0 6px 14px rgba(0,0,0,0.08);
+    margin-bottom:20px;
+}
+
+input, textarea{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:1px solid #ccc;
+    border-radius:8px;
+    box-sizing:border-box;
+}
+
+button{
+    margin-top:15px;
+    background:#1565c0;
+    color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.note{
+    background:#f8fbff;
+    padding:18px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.note h3{
+    margin:0 0 8px;
+    color:#0d47a1;
+}
+
+.delete-btn{
+    background:#d32f2f;
+    margin-top:10px;
+}
+
+.note-card{
+    background:white;
+    padding:18px;
+    margin-bottom:15px;
+    border-radius:14px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.08);
+}
+
+.note-card h3{
+    color:#0d47a1;
+    margin-bottom:8px;
+}
+
+.note-card p{
+    color:#444;
+    margin-bottom:10px;
+}
+
+.note-card small{
+    color:gray;
+}
+
+.note-card button{
+    background:#e53935;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+#searchInput{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    margin:15px 0;
+    font-size:15px;
+}
+
+.pin-btn{
+    background:#7b1fa2;
+    color:white;
+    border:none;
+    padding:8px 14px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-right:8px;
+}
+
+.pin-btn:hover{
+    background:#f9a825;
+}
+
+.pinned-card{
+    border:2px solid #fbc02d;
+    box-shadow:0 8px 18px rgba(251,192,45,0.25);
+    background:#fffdf3;
+}
+
+select{
+    width:100%;
+    padding:10px;
+    border-radius:8px;
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+.category-badge{
+    display:inline-block;
+    background:#1565c0;
+    color:white;
+    padding:5px 10px;
+    border-radius:20px;
+    font-size:12px;
+    margin-bottom:10px;
+}
+.pdf-btn{
+    background:#e53935;
+    color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    margin-bottom:20px;
+    font-size:15px;
+}
+
+.pdf-btn:hover{
+    background:#c62828;
+}
+
+.blue-theme{ --main:#1565c0; }
+.purple-theme{ --main:#7b1fa2; }
+.green-theme{ --main:#2e7d32; }
+
+nav{
+   background:var(--main,#1565c0);
+}
+button{
+   background:var(--main,#1565c0);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <h2>My Notes 📝</h2>
+    <button onclick="logoutUser()">Logout</button>
+</nav>
+
+<div class="container">
+
+    <div class="card">
+        <h2 id="welcomeText"></h2>
+
+        <input type="text" id="title" placeholder="Note title">
+
+        <textarea id="content" rows="5" placeholder="Write your note..."></textarea>
+        <select id="category">
+            <option value="Study">📘 Study</option>
+            <option value="Personal">💼 Personal</option>
+            <option value="Important">⭐ Important</option>
+            <option value="Ideas">💡 Ideas</option>
+        </select>
+        <button onclick="addNote()" id="saveBtn">Save Note</button>
+        <p id="msg"></p>
+    </div>
+    <input type="text" id="searchInput" placeholder="Search notes..." onkeyup="searchNotes()">
+    <button onclick="downloadPDF()" class="pdf-btn">
+      📄 Download Notes PDF
+    </button>
+    <button onclick="setTheme('blue')">Blue</button>
+    <button onclick="setTheme('purple')">Purple</button>
+    <button onclick="setTheme('green')">Green</button>
+    <div class="card">
+        <h2>Your Notes</h2>
+        <div id="notesList"></div>
+    </div>
+
+</div>
+
+<script src="../auth/authe.js"></script>
+
+<script>
+function testLogout() {
+    alert("Logout button is working!");
+}
+</script>
+
+<!-- <script>
+    requireLogin();
+</script> -->
+
+</body>
+</html>

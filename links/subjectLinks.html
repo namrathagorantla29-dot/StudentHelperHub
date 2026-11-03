@@ -1,0 +1,379 @@
+<!-- subjectlinks.html  PREMIUM DARK VERSION -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subject Resource Hub</title>
+<script src="../js/main.js" defer></script>
+<script src="subjectlinks.js" defer></script>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#0f1117;
+    color:white;
+}
+
+/* HERO SECTION */
+
+.hero{
+    position:relative;
+    height:320px;
+    background:url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=1600&q=80");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.65);
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    width:90%;
+}
+
+.hero-content h1{
+    font-size:48px;
+    margin-bottom:12px;
+    color:#00e5ff;
+}
+
+.hero-content p{
+    font-size:18px;
+    color:#dddddd;
+    line-height:1.6;
+}
+
+/* MAIN */
+
+.main-container{
+    width:92%;
+    max-width:1300px;
+    margin:auto;
+    padding:40px 0 60px;
+}
+
+/* SEARCH */
+
+.top-search{
+    text-align:center;
+    margin-bottom:35px;
+}
+
+.top-search input{
+    width:100%;
+    max-width:520px;
+    padding:14px 18px;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    outline:none;
+    background:#1b1e27;
+    color:white;
+    border:1px solid #2b2f3b;
+}
+
+/* GRID */
+
+.resource-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+/* CARDS */
+
+.resource-card{
+    position:relative;
+    border-radius:18px;
+    padding:28px 22px;
+    min-height:280px;
+    background-size:cover;
+    background-position:center;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,0.35);
+    transition:0.35s;
+}
+
+.resource-card::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,0.62);
+}
+
+.resource-card *{
+    position:relative;
+    z-index:2;
+}
+
+.resource-card:hover{
+    transform:translateY(-8px) scale(1.02);
+}
+
+.resource-card h2{
+    font-size:24px;
+    margin-bottom:14px;
+    color:#00e5ff;
+}
+
+.resource-card p{
+    font-size:15px;
+    line-height:1.7;
+    color:#f0f0f0;
+    margin-bottom:20px;
+}
+
+/* BUTTON */
+
+.btn-main{
+    display:inline-block;
+    padding:12px 20px;
+    background:#00e5ff;
+    color:#000;
+    text-decoration:none;
+    border-radius:10px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.btn-main:hover{
+    background:white;
+}
+
+/* BACKGROUND IMAGES */
+
+.youtube-card{
+    background-image:url("https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?auto=format&fit=crop&w=900&q=80");
+}
+
+.pdf-card{
+    background-image:url("https://images.unsplash.com/photo-1517842645767-c639042777db?auto=format&fit=crop&w=900&q=80");
+}
+
+.interview-card{
+    background-image:url("https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=900&q=80");
+}
+
+.practice-card{
+    background-image:url("https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80");
+}
+
+.quiz-card{
+    background-image:url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=900&q=80");
+}
+
+.site-card{
+    background-image:url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80");
+}
+
+/* BACK BUTTON */
+
+.back-area{
+    text-align:center;
+    margin-top:45px;
+}
+
+.back-btn{
+    padding:13px 28px;
+    background:#00e5ff;
+    border:none;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.back-btn:hover{
+    background:white;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+    .hero{
+        height:260px;
+    }
+
+    .hero-content h1{
+        font-size:34px;
+    }
+
+    .hero-content p{
+        font-size:15px;
+    }
+
+    .resource-card{
+        min-height:260px;
+    }
+
+    .resource-card h2{
+        font-size:21px;
+    }
+
+    .btn-main,
+    .back-btn{
+        width:100%;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="hero">
+
+    <div class="overlay"></div>
+
+    <div class="hero-content">
+        <h1 id="subjectTitle">C Programming</h1>
+        <p>
+            Premium learning hub with playlists, PDFs, notes,
+            interview questions and practice sets.
+        </p>
+    </div>
+
+</header>
+
+
+<section class="main-container">
+
+    <div class="top-search">
+
+        <input type="text"
+               placeholder="Search resources...">
+
+    </div>
+
+
+    <div class="resource-grid">
+
+        <!-- YouTube -->
+        <div class="resource-card youtube-card">
+
+            <h2>🎥 Video Tutorials</h2>
+
+            <p>
+                Best curated YouTube playlists from beginner to advanced.
+            </p>
+
+            <a target="_blank" class="btn-main">
+                Open Playlist
+            </a>
+
+        </div>
+
+
+        <!-- PDF -->
+        <div class="resource-card pdf-card">
+
+            <h2>📄 PDF Notes</h2>
+
+            <p>
+                Easy revision notes, handwritten PDFs, cheat sheets.
+            </p>
+
+            <a target="_blank" class="btn-main">
+                Download PDF
+            </a>
+
+        </div>
+
+
+        <!-- Interview -->
+        <div class="resource-card interview-card">
+
+            <h2>💼 Interview Questions</h2>
+
+            <p>
+                Important viva + placement questions with answers.
+            </p>
+
+            <a target="_blank" class="btn-main">
+                View Questions
+            </a>
+
+        </div>
+
+
+        <!-- Practice -->
+        <div class="resource-card practice-card">
+
+            <h2>📝 50 Practice Questions</h2>
+
+            <p>
+                Topic wise coding and theory questions for mastery.
+            </p>
+
+            <a target="_blank" class="btn-main">
+                Start Practice
+            </a>
+
+        </div>
+
+
+        <!-- Quiz -->
+        <div class="resource-card quiz-card">
+
+            <h2>🎯 Quiz Test</h2>
+
+            <p>
+                Check your preparation with timed MCQ quiz.
+            </p>
+
+            <a target="_blank" class="btn-main">
+                Start Quiz
+            </a>
+
+        </div>
+
+
+        <!-- Websites -->
+        <div class="resource-card site-card">
+
+            <h2>🌐 Useful Websites</h2>
+
+            <p>
+                Top coding websites and references for this subject.
+            </p>
+
+            <a target="_blank" class="btn-main">
+                Explore
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="back-area">
+        <button onclick="history.back()" class="back-btn">
+            ⬅ Back
+        </button>
+    </div>
+
+</section>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!-- quiz.html  DARK PREMIUM QUIZ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subject Quiz</title>
+<script src="quiz.js" defer></script>
+
+<style>
+    /* quiz.css */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#0b0f19,#141a26,#1b2233);
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:white;
+    padding:20px;
+}
+
+.quiz-container{
+    width:100%;
+    max-width:750px;
+}
+
+.top-bar{
+    text-align:center;
+    margin-bottom:22px;
+}
+
+.top-bar h1{
+    font-size:38px;
+    color:#00e5ff;
+    margin-bottom:8px;
+}
+
+.top-bar p{
+    color:#c8d2e0;
+    font-size:16px;
+}
+
+.quiz-card{
+    background:#111723;
+    border:1px solid #253047;
+    border-radius:22px;
+    padding:28px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.35);
+}
+
+.quiz-info{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    margin-bottom:18px;
+    color:#9fb0c7;
+    font-size:15px;
+}
+
+#questionText{
+    font-size:28px;
+    line-height:1.4;
+    margin-bottom:24px;
+    color:#ffffff;
+}
+
+.options{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:14px;
+}
+
+.option-btn{
+    background:#1b2435;
+    color:white;
+    border:1px solid #2d3a54;
+    border-radius:14px;
+    padding:16px;
+    font-size:16px;
+    text-align:left;
+    cursor:pointer;
+    transition:0.25s;
+}
+
+.option-btn:hover{
+    background:#24314a;
+    transform:translateY(-2px);
+}
+
+.option-btn.correct{
+    background:#0d5c35;
+    border-color:#14b86a;
+}
+
+.option-btn.wrong{
+    background:#6a1c22;
+    border-color:#ff5c6c;
+}
+
+.option-btn:disabled{
+    cursor:not-allowed;
+    opacity:0.95;
+}
+
+#nextBtn{
+    margin-top:22px;
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:14px;
+    background:#00e5ff;
+    color:#04111b;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    display:none;
+    transition:0.25s;
+}
+
+#nextBtn:hover{
+    background:#7cf4ff;
+}
+
+.result-box{
+    margin-top:20px;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+    color:#00e5ff;
+}
+
+.result-box button{
+    margin-top:16px;
+    padding:12px 20px;
+    border:none;
+    border-radius:12px;
+    background:#00e5ff;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+@media(max-width:768px){
+
+    .top-bar h1{
+        font-size:30px;
+    }
+
+    #questionText{
+        font-size:22px;
+    }
+
+    .quiz-card{
+        padding:22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+    <div class="top-bar">
+        <h1>🎯 Subject Quiz</h1>
+        <p>Test your knowledge and improve fast</p>
+    </div>
+
+    <div class="quiz-card">
+
+        <div class="quiz-info">
+            <span id="questionNo">Question 1 / 10</span>
+            <span id="scoreBox">Score: 0</span>
+        </div>
+
+        <h2 id="questionText">
+            Loading Question...
+        </h2>
+
+        <div class="options">
+
+            <button class="option-btn" onclick="checkAnswer(this)">
+                Option A
+            </button>
+
+            <button class="option-btn" onclick="checkAnswer(this)">
+                Option B
+            </button>
+
+            <button class="option-btn" onclick="checkAnswer(this)">
+                Option C
+            </button>
+
+            <button class="option-btn" onclick="checkAnswer(this)">
+                Option D
+            </button>
+
+        </div>
+
+        <button id="nextBtn" onclick="nextQuestion()">
+            Next ➜
+        </button>
+
+    </div>
+
+    <div id="resultBox" class="result-box"></div>
+
+</div>
+
+</body>
+</html>

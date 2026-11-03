@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Student Helper Hub | Bookmarks</title>
+
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<script src="data_notes.js" defer></script>
+<script src="bookmarks.js" defer></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+}
+
+body{
+
+background:#f4f8fc;
+
+color:#1f2937;
+
+overflow-x:hidden;
+
+}
+
+/* ===========================
+NAVBAR
+=========================== */
+
+nav{
+
+height:80px;
+
+background:#ffffff;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:0 60px;
+
+box-shadow:0 6px 20px rgba(0,0,0,.06);
+
+position:sticky;
+
+top:0;
+
+z-index:1000;
+
+}
+
+.logo{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+}
+
+.logo-icon{
+
+height:55px;
+
+width:55px;
+
+border-radius:16px;
+
+background:linear-gradient(135deg,#1456B8,#3B82F6);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+color:white;
+
+font-size:22px;
+
+}
+
+.logo-text h2{
+
+color:#1456B8;
+
+font-size:25px;
+
+font-weight:700;
+
+}
+
+.logo-text p{
+
+font-size:13px;
+
+color:#64748b;
+
+margin-top:3px;
+
+}
+
+.back-btn{
+
+background:#1456B8;
+
+color:white;
+
+border:none;
+
+padding:13px 25px;
+
+border-radius:14px;
+
+cursor:pointer;
+
+font-size:15px;
+
+font-weight:600;
+
+transition:.3s;
+
+display:flex;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.back-btn:hover{
+
+background:#0f4694;
+
+transform:translateY(-3px);
+
+}
+
+/* ===========================
+CONTAINER
+=========================== */
+
+.container{
+
+width:92%;
+
+max-width:1300px;
+
+margin:40px auto;
+
+}
+
+/* ===========================
+HEADER
+=========================== */
+
+.header{
+
+background:linear-gradient(135deg,#1456B8,#3B82F6);
+
+border-radius:30px;
+
+padding:45px;
+
+color:white;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:30px;
+
+margin-bottom:35px;
+
+box-shadow:0 20px 40px rgba(20,86,184,.18);
+
+}
+
+.header-left h1{
+
+font-size:42px;
+
+margin-bottom:15px;
+
+}
+
+.header-left p{
+
+font-size:17px;
+
+opacity:.95;
+
+line-height:1.7;
+
+max-width:650px;
+
+}
+
+.stats{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+}
+
+.stat-box{
+
+background:rgba(255,255,255,.18);
+
+padding:22px;
+
+border-radius:18px;
+
+text-align:center;
+
+min-width:140px;
+
+backdrop-filter:blur(15px);
+
+}
+
+.stat-box h2{
+
+font-size:28px;
+
+margin-bottom:6px;
+
+}
+
+.stat-box span{
+
+font-size:14px;
+
+}
+
+/* ===========================
+SEARCH
+=========================== */
+
+.search-box{
+
+max-width:650px;
+
+margin:0 auto 35px;
+
+position:relative;
+
+}
+
+.search-box i{
+
+position:absolute;
+
+left:20px;
+
+top:50%;
+
+transform:translateY(-50%);
+
+color:#64748b;
+
+font-size:18px;
+
+}
+
+.search-box input{
+
+width:100%;
+
+padding:18px 20px 18px 55px;
+
+border:none;
+
+border-radius:18px;
+
+outline:none;
+
+font-size:16px;
+
+background:white;
+
+box-shadow:0 12px 25px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+.search-box input:focus{
+
+box-shadow:0 15px 35px rgba(20,86,184,.18);
+
+}
+
+/* ===========================
+BOOKMARK GRID
+=========================== */
+
+.bookmarks-grid{
+
+display:grid;
+
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+
+gap:28px;
+
+}
+
+/* ===========================
+BOOKMARK CARD
+=========================== */
+
+.bookmark-card{
+
+background:#ffffff;
+
+border-radius:22px;
+
+padding:28px;
+
+border:1px solid #e8eef8;
+
+box-shadow:0 12px 28px rgba(0,0,0,.08);
+
+transition:.35s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.bookmark-card::before{
+
+content:"";
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:5px;
+
+background:linear-gradient(90deg,#1456B8,#3B82F6);
+
+}
+
+.bookmark-card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:0 20px 40px rgba(20,86,184,.18);
+
+}
+
+.bookmark-top{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+margin-bottom:20px;
+
+}
+
+.bookmark-icon{
+
+width:55px;
+
+height:55px;
+
+border-radius:16px;
+
+background:#eaf3ff;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:22px;
+
+color:#1456B8;
+
+}
+
+.saved-badge{
+
+padding:8px 16px;
+
+background:#fff4d6;
+
+color:#d97706;
+
+border-radius:30px;
+
+font-size:13px;
+
+font-weight:600;
+
+}
+
+.bookmark-card h3{
+
+font-size:24px;
+
+color:#1456B8;
+
+margin-bottom:14px;
+
+line-height:1.4;
+
+}
+
+.bookmark-card p{
+
+color:#64748b;
+
+font-size:15px;
+
+line-height:1.8;
+
+margin-bottom:22px;
+
+}
+
+.topic-details{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-bottom:25px;
+
+font-size:14px;
+
+color:#64748b;
+
+}
+
+.topic-details span{
+
+display:flex;
+
+align-items:center;
+
+gap:8px;
+
+}
+
+/* ===========================
+BUTTONS
+=========================== */
+
+.card-buttons{
+
+display:flex;
+
+gap:12px;
+
+}
+
+.study-btn{
+
+flex:1;
+
+padding:14px;
+
+border:none;
+
+border-radius:12px;
+
+background:#1456B8;
+
+color:white;
+
+font-size:15px;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.study-btn:hover{
+
+background:#0f4694;
+
+}
+
+.remove-btn{
+
+width:55px;
+
+border:none;
+
+border-radius:12px;
+
+background:#ef4444;
+
+color:white;
+
+font-size:18px;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.remove-btn:hover{
+
+background:#dc2626;
+
+}
+
+/* ===========================
+EMPTY STATE
+=========================== */
+
+.empty-state{
+
+display:none;
+
+text-align:center;
+
+padding:80px 20px;
+
+}
+
+.empty-state i{
+
+font-size:90px;
+
+color:#cbd5e1;
+
+margin-bottom:25px;
+
+}
+
+.empty-state h2{
+
+font-size:34px;
+
+color:#1456B8;
+
+margin-bottom:15px;
+
+}
+
+.empty-state p{
+
+font-size:17px;
+
+color:#64748b;
+
+max-width:500px;
+
+margin:auto;
+
+line-height:1.8;
+
+}
+
+/* ===========================
+FOOTER
+=========================== */
+
+footer{
+
+margin-top:70px;
+
+background:#ffffff;
+
+padding:40px;
+
+text-align:center;
+
+border-top:1px solid #e5e7eb;
+
+color:#64748b;
+
+}
+
+footer h2{
+
+color:#1456B8;
+
+margin-bottom:12px;
+
+}
+
+footer hr{
+
+width:80px;
+
+margin:20px auto;
+
+border:none;
+
+height:4px;
+
+background:#1456B8;
+
+border-radius:10px;
+
+}
+
+/* ===========================
+RESPONSIVE
+=========================== */
+
+@media(max-width:992px){
+
+nav{
+
+padding:20px 30px;
+
+height:auto;
+
+}
+
+.header{
+
+padding:35px;
+
+}
+
+.header-left h1{
+
+font-size:34px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+nav{
+
+flex-direction:column;
+
+gap:18px;
+
+}
+
+.logo{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+.back-btn{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+.header{
+
+padding:28px;
+
+}
+
+.stats{
+
+grid-template-columns:1fr;
+
+width:100%;
+
+}
+
+.bookmarks-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.card-buttons{
+
+flex-direction:column;
+
+}
+
+.remove-btn{
+
+width:100%;
+
+height:50px;
+
+}
+
+}
+
+@media(max-width:480px){
+
+.container{
+
+width:95%;
+
+}
+
+.header-left h1{
+
+font-size:28px;
+
+}
+
+.bookmark-card{
+
+padding:22px;
+
+}
+
+.search-box input{
+
+font-size:15px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav>
+
+<div class="logo">
+
+<div class="logo-icon">
+
+<i class="fa-solid fa-bookmark"></i>
+
+</div>
+
+<div class="logo-text">
+
+<h2>Student Helper Hub</h2>
+
+<p>Your Saved Topics</p>
+
+</div>
+
+</div>
+
+<button
+class="back-btn"
+onclick="history.back()">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+Back
+
+</button>
+
+</nav>
+
+<div class="container">
+
+<div class="header">
+
+<div class="header-left">
+
+<h1>
+
+⭐ My Bookmarks
+
+</h1>
+
+<p>
+
+Access all your bookmarked topics in one place and continue learning anytime.
+
+</p>
+
+</div>
+
+<div class="stats">
+
+<div class="stat-box">
+
+<h2 id="bookmarkCount">
+
+0
+
+</h2>
+
+<span>
+
+Saved Topics
+
+</span>
+
+</div>
+
+<div class="stat-box">
+
+<h2>
+
+24×7
+
+</h2>
+
+<span>
+
+Available
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+id="searchInput"
+placeholder="Search bookmarked topics..."
+onkeyup="searchBookmarks()">
+
+</div>
+
+<div
+id="bookmarksContainer"
+class="bookmarks-grid">
+
+</div>
+
+<div
+id="emptyState"
+class="empty-state">
+
+<i class="fa-solid fa-bookmark"></i>
+
+<h2>
+
+No Bookmarks Yet
+
+</h2>
+
+<p>
+
+Bookmark your favourite topics from the Topics page to see them here.
+
+</p>
+
+</div>
+
+</div>
+
+<footer>
+
+<h2>
+
+📚 Student Helper Hub
+
+</h2>
+
+<p>
+
+Smart Learning Platform
+
+</p>
+
+<hr>
+
+<p>
+
+© 2026 Student Helper Hub
+
+</p>
+
+</footer>
+
+</body>
+
+</html>
