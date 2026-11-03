@@ -349,36 +349,30 @@ function showLinks(sem, clickedCard){
 function updateAuthUI() {
 
     const token = localStorage.getItem("token");
+    const loggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+    const isLoggedIn = Boolean(token) || loggedIn;
 
     const loginBtn = document.getElementById("loginBtn");
     const signupBtn = document.getElementById("signupBtn");
     const logoutBtn = document.getElementById("logoutBtn");
     const profileBtn = document.getElementById("profileBtn");
 
-    if (!loginBtn || !signupBtn || !logoutBtn || !profileBtn) {
-        return;
+    if (loginBtn) {
+        loginBtn.style.display = isLoggedIn ? "none" : "inline-block";
     }
 
-    if (token) {
+    if (signupBtn) {
+        signupBtn.style.display = isLoggedIn ? "none" : "inline-block";
+    }
 
-        // User is logged in
-        loginBtn.style.display = "none";
-        signupBtn.style.display = "none";
+    if (logoutBtn) {
+        logoutBtn.style.display = isLoggedIn ? "inline-block" : "none";
+    }
 
-        logoutBtn.style.display = "block";
-        profileBtn.style.display = "block";
-
-    } else {
-
-        // User is logged out
-        loginBtn.style.display = "block";
-        signupBtn.style.display = "block";
-
-        logoutBtn.style.display = "none";
-        profileBtn.style.display = "none";
+    if (profileBtn) {
+        profileBtn.style.display = isLoggedIn ? "inline-block" : "none";
     }
 }
 
-window.addEventListener("DOMContentLoaded", function () {
-    updateAuthUI();
-});
+document.addEventListener("DOMContentLoaded", updateAuthUI);
