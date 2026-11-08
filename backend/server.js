@@ -1,5 +1,6 @@
+
 const express = require("express");
-const mysql = require("mysql2");
+const db=require("./db");
 const bcrypt = require("bcryptjs");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
@@ -38,28 +39,20 @@ function authenticateToken(req, res, next) {
 
     const authHeader = req.headers["authorization"];
 
-    // No token provided
     if (!authHeader) {
-
         return res.status(401).json({
             success: false,
             message: "Access denied. Please login."
         });
-
     }
-
-    // Expected format:
-    // Authorization: Bearer TOKEN
 
     const token = authHeader.split(" ")[1];
 
     if (!token) {
-
         return res.status(401).json({
             success: false,
             message: "Invalid authentication token."
         });
-
     }
 
     jwt.verify(
@@ -68,35 +61,33 @@ function authenticateToken(req, res, next) {
         (err, user) => {
 
             if (err) {
-
                 return res.status(403).json({
                     success: false,
                     message: "Session expired. Please login again."
                 });
-
             }
 
-            // Token is valid
             req.user = user;
-
             next();
-
         }
     );
-
 }
 
 // =======================
-// EMAIL CONFIGURATION
+// BREVO SMTP EMAIL CONFIGURATION
 // =======================
 
 const transporter = nodemailer.createTransport({
 
-    service: "gmail",
+    host: process.env.BREVO_HOST,
+
+    port: Number(process.env.BREVO_PORT || 587),
+
+    secure: false,
 
     auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS
+        user: process.env.BREVO_USER,
+        pass: process.env.BREVO_PASS
     }
 
 });
@@ -109,34 +100,54 @@ const otpStore = {};
 
 const verifiedEmails = {};
 
-
 // =======================
 // MYSQL CONNECTION
 // =======================
 
 const db = mysql.createConnection({
+
     host: process.env.DB_HOST,
+
+    port: Number(process.env.DB_PORT || 3306),
+
     user: process.env.DB_USER,
+
     password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME
+
+    database: process.env.DB_NAME,
+
+    ssl: process.env.DB_SSL_CA
+        ? {
+            ca: process.env.DB_SSL_CA,
+            minVersion: "TLSv1.2"
+        }
+        : undefined
+
 });
 
 db.connect((err) => {
+
     if (err) {
-        console.error("MySQL connection failed:", err.message);
+        console.error(
+            "Database connection failed:",
+            err.message
+        );
+
         process.exit(1);
     }
 
-    console.log("MySQL Connected Successfully ✅");
-});
+    console.log("Database Connected Successfully ✅");
 
+});
 
 // =======================
 // HOME ROUTE
 // =======================
 
 app.get("/", (req, res) => {
+
     res.send("Student Helper Hub Backend Running 🚀");
+
 });
 
 // =======================
@@ -157,12 +168,15 @@ app.post("/send-otp", async (req, res) => {
     }
 
     // Check whether account already exists
+
     const checkSql =
         "SELECT id FROM users WHERE email = ?";
 
     db.query(checkSql, [email], async (err, result) => {
 
         if (err) {
+
+            console.error("Database error:", err.message);
 
             return res.json({
                 success: false,
@@ -181,12 +195,13 @@ app.post("/send-otp", async (req, res) => {
         }
 
         // Generate 6-digit OTP
+
         const otp = Math.floor(
             100000 + Math.random() * 900000
         ).toString();
 
-
         // Store OTP for 10 minutes
+
         otpStore[email] = {
 
             otp: otp,
@@ -196,12 +211,13 @@ app.post("/send-otp", async (req, res) => {
 
         };
 
-
         try {
+
+            // Send OTP using Brevo SMTP
 
             await transporter.sendMail({
 
-                from: process.env.EMAIL_USER,
+                from: `"Student Helper Hub" <${process.env.BREVO_SENDER}>`,
 
                 to: email,
 
@@ -217,12 +233,10 @@ Do not share this OTP with anyone.`
 
             });
 
-
             console.log(
                 "OTP sent successfully to:",
                 email
             );
-
 
             res.json({
 
@@ -236,11 +250,14 @@ Do not share this OTP with anyone.`
         }
         catch (error) {
 
-            console.log(
-                "Email Error:",
-                error
+            console.error(
+                "Brevo Email Error:",
+                error.message
             );
 
+            // Remove OTP if email sending fails
+
+            delete otpStore[email];
 
             res.json({
 
@@ -266,6 +283,7 @@ app.post("/verify-otp", (req, res) => {
     const { email, otp } = req.body;
 
     // Check required fields
+
     if (!email || !otp) {
 
         return res.json({
@@ -276,6 +294,7 @@ app.post("/verify-otp", (req, res) => {
     }
 
     // Check whether OTP exists
+
     const storedData = otpStore[email];
 
     if (!storedData) {
@@ -288,6 +307,7 @@ app.post("/verify-otp", (req, res) => {
     }
 
     // Check OTP expiry
+
     if (Date.now() > storedData.expiresAt) {
 
         delete otpStore[email];
@@ -300,6 +320,7 @@ app.post("/verify-otp", (req, res) => {
     }
 
     // Check whether OTP matches
+
     if (storedData.otp !== otp) {
 
         return res.json({
@@ -320,11 +341,15 @@ app.post("/verify-otp", (req, res) => {
     delete otpStore[email];
 
     res.json({
+
         success: true,
+
         message: "Email verified successfully ✅"
+
     });
 
 });
+
 
 // =======================
 // REGISTER ROUTE

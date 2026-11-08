@@ -27,16 +27,14 @@ function isUserLoggedIn() {
     return token !== null;
 }
 
-
 function logoutUser() {
-
-    // Remove authentication/session data
     localStorage.removeItem("token");
     localStorage.removeItem("userId");
     localStorage.removeItem("userName");
     localStorage.removeItem("userEmail");
     localStorage.removeItem("redirectAfterLogin");
+    localStorage.removeItem("isLoggedIn");
 
-    // Always go to the homepage
-    window.location.href = "/index.html";
+    window.location.href = "/frontend/index.html";
 }
+
