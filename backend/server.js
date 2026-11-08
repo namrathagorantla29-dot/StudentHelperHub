@@ -134,6 +134,8 @@ app.get("/", (req, res) => {
 
 app.post("/send-otp", async (req, res) => {
 
+    console.log("STEP 1: SEND OTP ROUTE HIT");
+
     const { email } = req.body;
 
     if (!email) {
@@ -143,29 +145,28 @@ app.post("/send-otp", async (req, res) => {
         });
     }
 
-    const checkSql =
-        "SELECT id FROM users WHERE email = ?";
+    const checkSql = "SELECT id FROM users WHERE email = ?";
+
+    console.log("STEP 2: Starting database query");
 
     db.query(checkSql, [email], async (err, result) => {
 
-        if (err) {
+        console.log("STEP 3: Database callback received");
 
+        if (err) {
             console.error("Database error:", err.message);
 
             return res.json({
                 success: false,
                 message: "Database error"
             });
-
         }
 
         if (result.length > 0) {
-
             return res.json({
                 success: false,
                 message: "Account already exists. Please login."
             });
-
         }
 
         const otp = Math.floor(
@@ -179,6 +180,8 @@ app.post("/send-otp", async (req, res) => {
 
         try {
 
+            console.log("STEP 4: Starting Brevo email");
+
             await transporter.sendMail({
 
                 from: `"Student Helper Hub" <${process.env.BREVO_SENDER}>`,
@@ -187,14 +190,15 @@ app.post("/send-otp", async (req, res) => {
 
                 subject: "Student Helper Hub - Email Verification OTP",
 
-                text:
-`Your OTP for Student Helper Hub is: ${otp}
+                text: `Your OTP for Student Helper Hub is: ${otp}
 
 This OTP will expire in 10 minutes.
 
 Do not share this OTP with anyone.`
 
             });
+
+            console.log("STEP 5: Brevo email sent");
 
             console.log("OTP sent successfully to:", email);
 
@@ -203,8 +207,7 @@ Do not share this OTP with anyone.`
                 message: "OTP sent successfully to your email"
             });
 
-        }
-        catch (error) {
+        } catch (error) {
 
             console.error("Brevo Email Error:", error.message);
 
