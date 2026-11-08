@@ -1,13 +1,25 @@
 
+// =======================
+// ENVIRONMENT CONFIGURATION
+// =======================
+
+require("dotenv").config();
+
+// =======================
+// IMPORTS
+// =======================
+
 const express = require("express");
-const db=require("./db");
+const db = require("./db");
 const bcrypt = require("bcryptjs");
 const cors = require("cors");
 const nodemailer = require("nodemailer");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 
-require("dotenv").config();
+// =======================
+// SUBJECT TOPIC COUNTS
+// =======================
 
 const SUBJECT_TOPIC_COUNTS = {
     c_programming: 23,
@@ -26,13 +38,17 @@ const SUBJECT_TOPIC_COUNTS = {
     cyber: 25
 };
 
+// =======================
+// EXPRESS CONFIGURATION
+// =======================
+
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
 // =======================
-// JWT AUTHENTICATION MIDDLEWARE
+// JWT AUTHENTICATION
 // =======================
 
 function authenticateToken(req, res, next) {
@@ -69,12 +85,14 @@ function authenticateToken(req, res, next) {
 
             req.user = user;
             next();
+
         }
     );
+
 }
 
 // =======================
-// BREVO SMTP EMAIL CONFIGURATION
+// BREVO SMTP CONFIGURATION
 // =======================
 
 const transporter = nodemailer.createTransport({
@@ -93,52 +111,12 @@ const transporter = nodemailer.createTransport({
 });
 
 // =======================
-// TEMPORARY OTP STORAGE
+// OTP STORAGE
 // =======================
 
 const otpStore = {};
 
 const verifiedEmails = {};
-
-// =======================
-// MYSQL CONNECTION
-// =======================
-
-const db = mysql.createConnection({
-
-    host: process.env.DB_HOST,
-
-    port: Number(process.env.DB_PORT || 3306),
-
-    user: process.env.DB_USER,
-
-    password: process.env.DB_PASSWORD,
-
-    database: process.env.DB_NAME,
-
-    ssl: process.env.DB_SSL_CA
-        ? {
-            ca: process.env.DB_SSL_CA,
-            minVersion: "TLSv1.2"
-        }
-        : undefined
-
-});
-
-db.connect((err) => {
-
-    if (err) {
-        console.error(
-            "Database connection failed:",
-            err.message
-        );
-
-        process.exit(1);
-    }
-
-    console.log("Database Connected Successfully ✅");
-
-});
 
 // =======================
 // HOME ROUTE
@@ -159,15 +137,11 @@ app.post("/send-otp", async (req, res) => {
     const { email } = req.body;
 
     if (!email) {
-
         return res.json({
             success: false,
             message: "Email is required"
         });
-
     }
-
-    // Check whether account already exists
 
     const checkSql =
         "SELECT id FROM users WHERE email = ?";
@@ -194,26 +168,16 @@ app.post("/send-otp", async (req, res) => {
 
         }
 
-        // Generate 6-digit OTP
-
         const otp = Math.floor(
             100000 + Math.random() * 900000
         ).toString();
 
-        // Store OTP for 10 minutes
-
         otpStore[email] = {
-
             otp: otp,
-
-            expiresAt:
-                Date.now() + 10 * 60 * 1000
-
+            expiresAt: Date.now() + 10 * 60 * 1000
         };
 
         try {
-
-            // Send OTP using Brevo SMTP
 
             await transporter.sendMail({
 
@@ -221,8 +185,7 @@ app.post("/send-otp", async (req, res) => {
 
                 to: email,
 
-                subject:
-                    "Student Helper Hub - Email Verification OTP",
+                subject: "Student Helper Hub - Email Verification OTP",
 
                 text:
 `Your OTP for Student Helper Hub is: ${otp}
@@ -233,39 +196,23 @@ Do not share this OTP with anyone.`
 
             });
 
-            console.log(
-                "OTP sent successfully to:",
-                email
-            );
+            console.log("OTP sent successfully to:", email);
 
-            res.json({
-
+            return res.json({
                 success: true,
-
-                message:
-                    "OTP sent successfully to your email"
-
+                message: "OTP sent successfully to your email"
             });
 
         }
         catch (error) {
 
-            console.error(
-                "Brevo Email Error:",
-                error.message
-            );
-
-            // Remove OTP if email sending fails
+            console.error("Brevo Email Error:", error.message);
 
             delete otpStore[email];
 
-            res.json({
-
+            return res.json({
                 success: false,
-
-                message:
-                    "Failed to send OTP. Please try again."
-
+                message: "Failed to send OTP. Please try again."
             });
 
         }
@@ -282,8 +229,6 @@ app.post("/verify-otp", (req, res) => {
 
     const { email, otp } = req.body;
 
-    // Check required fields
-
     if (!email || !otp) {
 
         return res.json({
@@ -292,8 +237,6 @@ app.post("/verify-otp", (req, res) => {
         });
 
     }
-
-    // Check whether OTP exists
 
     const storedData = otpStore[email];
 
@@ -306,8 +249,6 @@ app.post("/verify-otp", (req, res) => {
 
     }
 
-    // Check OTP expiry
-
     if (Date.now() > storedData.expiresAt) {
 
         delete otpStore[email];
@@ -319,9 +260,7 @@ app.post("/verify-otp", (req, res) => {
 
     }
 
-    // Check whether OTP matches
-
-    if (storedData.otp !== otp) {
+    if (storedData.otp !== String(otp)) {
 
         return res.json({
             success: false,
@@ -330,26 +269,18 @@ app.post("/verify-otp", (req, res) => {
 
     }
 
-    // Mark email as verified
-
     verifiedEmails[email] = {
         verifiedAt: Date.now()
     };
 
-    // Remove OTP
-
     delete otpStore[email];
 
-    res.json({
-
+    return res.json({
         success: true,
-
         message: "Email verified successfully ✅"
-
     });
 
 });
-
 
 // =======================
 // REGISTER ROUTE
@@ -359,8 +290,6 @@ app.post("/register", async (req, res) => {
 
     const { name, email, password } = req.body;
 
-
-    // Check required fields
     if (!name || !email || !password) {
 
         return res.json({
@@ -370,8 +299,6 @@ app.post("/register", async (req, res) => {
 
     }
 
-
-    // Check whether email completed OTP verification
     if (!verifiedEmails[email]) {
 
         return res.json({
@@ -381,55 +308,43 @@ app.post("/register", async (req, res) => {
 
     }
 
-
     try {
 
-        // Check whether account already exists
         const checkSql =
             "SELECT id FROM users WHERE email = ?";
 
+        db.query(checkSql, [email], async (err, result) => {
 
-        db.query(
-            checkSql,
-            [email],
-            async (err, result) => {
+            if (err) {
 
-                if (err) {
+                console.error("Database Error:", err.message);
 
-                    console.log("Database Error:", err);
+                return res.json({
+                    success: false,
+                    message: "Database error"
+                });
 
-                    return res.json({
-                        success: false,
-                        message: "Database error"
-                    });
+            }
 
-                }
+            if (result.length > 0) {
 
+                return res.json({
+                    success: false,
+                    message: "Account already exists. Please login."
+                });
 
-                // Account already exists
-                if (result.length > 0) {
+            }
 
-                    return res.json({
-                        success: false,
-                        message:
-                            "Account already exists. Please login."
-                    });
+            try {
 
-                }
-
-
-                // Hash password
                 const hashedPassword =
                     await bcrypt.hash(password, 10);
 
-
-                // Insert user
                 const sql = `
                     INSERT INTO users
                     (name, email, password)
                     VALUES (?, ?, ?)
                 `;
-
 
                 db.query(
                     sql,
@@ -438,47 +353,45 @@ app.post("/register", async (req, res) => {
 
                         if (err) {
 
-                            console.log(
-                                "Registration Error:",
-                                err
-                            );
+                            console.error("Registration Error:", err.message);
 
                             return res.json({
                                 success: false,
-                                message:
-                                    "Registration failed"
+                                message: "Registration failed"
                             });
 
                         }
 
-
-                        // OTP verification is no longer needed
-                        // for this registration
                         delete verifiedEmails[email];
 
-
-                        res.json({
+                        return res.json({
                             success: true,
-                            message:
-                                "User Registered Successfully ✅"
+                            message: "User Registered Successfully ✅"
                         });
 
                     }
                 );
 
             }
-        );
+            catch (error) {
+
+                console.error("Password Hashing Error:", error.message);
+
+                return res.json({
+                    success: false,
+                    message: "Registration failed"
+                });
+
+            }
+
+        });
 
     }
-
     catch (error) {
 
-        console.log(
-            "Password Hashing Error:",
-            error
-        );
+        console.error("Registration Error:", error.message);
 
-        res.json({
+        return res.json({
             success: false,
             message: "Registration failed"
         });
@@ -486,7 +399,6 @@ app.post("/register", async (req, res) => {
     }
 
 });
-
 // =======================
 // LOGIN ROUTE
 // =======================

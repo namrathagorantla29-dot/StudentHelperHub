@@ -1,9 +1,3 @@
-
-
-// =======================
-// MYSQL CONNECTION
-// =======================
-
 const mysql = require("mysql2");
 
 const db = mysql.createConnection({
@@ -22,9 +16,11 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if (err) {
-        console.error("MySQL connection failed:", err);
+        console.error("MySQL connection failed:", err.message);
         return;
     }
 
     console.log("MySQL Connected Successfully ✅");
 });
+
+module.exports = db;
