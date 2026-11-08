@@ -46,7 +46,7 @@ async function sendOTP() {
 
 
         const response = await fetch(
-            "http://localhost:5000/send-otp",
+            "https://studenthelperhub.onrender.com/send-otp",
             {
 
                 method: "POST",
@@ -178,7 +178,7 @@ async function verifyOTP() {
 
 
         const response = await fetch(
-            "http://localhost:5000/verify-otp",
+            "https://studenthelperhub.onrender.com/verify-otp",
             {
 
                 method: "POST",
@@ -326,7 +326,7 @@ async function signupUser() {
 
 
         const response = await fetch(
-            "http://localhost:5000/register",
+            "https://studenthelperhub.onrender.com/register",
             {
 
                 method: "POST",

@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     try {
 
-        const response = await fetch("http://localhost:5000/profile", {
+        const response = await fetch("https://studenthelperhub.onrender.com/profile", {
             method: "GET",
 
             headers: {
@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
                 // Load profile statistics
         const statsResponse = await fetch(
-            "http://localhost:5000/profile/stats",
+            "https://studenthelperhub.onrender.com/profile/stats",
             {
                 method: "GET",
                 headers: {
@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             const totalTopics = getTotalTopics();
 
             const progressResponse = await fetch(
-                "http://localhost:5000/profile/progress",
+                "https://studenthelperhub.onrender.com/profile/progress",
                 {
                     method: "GET",
                     headers: {

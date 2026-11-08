@@ -99,7 +99,7 @@ async function addNote() {
     }
 
     let url =
-        "http://localhost:5000/add-note";
+        "https://studenthelperhub.onrender.com/add-note";
 
     let bodyData = {
         title: noteTitle,
@@ -112,7 +112,7 @@ async function addNote() {
     if (editId !== null) {
 
         url =
-            "http://localhost:5000/update-note";
+            "https://studenthelperhub.onrender.com/update-note";
 
         bodyData = {
             id: editId,
@@ -186,7 +186,7 @@ async function loadNotes() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/notes",
+            "https://studenthelperhub.onrender.com/notes",
             {
                 headers: {
                     "Authorization": "Bearer " + token
@@ -337,7 +337,7 @@ async function deleteNote(id) {
 
     try {
 
-        await fetch("http://localhost:5000/delete-note/" + id, {
+        await fetch("https://studenthelperhub.onrender.com/delete-note/" + id, {
 
             method: "DELETE",
 
@@ -426,7 +426,7 @@ async function pinNote(id, pinned) {
     try {
 
         await fetch(
-            "http://localhost:5000/pin-note",
+            "https://studenthelperhub.onrender.com/pin-note",
             {
                 method: "POST",
 
@@ -488,7 +488,7 @@ async function lockNote(id) {
 
         let response =
             await fetch(
-                "http://localhost:5000/lock-note",
+                "https://studenthelperhub.onrender.com/lock-note",
                 {
                     method: "POST",
 
@@ -533,7 +533,7 @@ async function openLocked(id) {
 
         let response =
             await fetch(
-                "http://localhost:5000/open-note",
+                "https://studenthelperhub.onrender.com/open-note",
                 {
                     method: "POST",
 
@@ -587,7 +587,7 @@ async function downloadPDF() {
 
     let response =
         await fetch(
-            "http://localhost:5000/notes/" + userId, {
+            "https://studenthelperhub.onrender.com/notes/" + userId, {
                 headers: {
                     "Authorization": "Bearer " + token
                 }
@@ -656,7 +656,7 @@ async function downloadSingleNote(id) {
 
     let response =
         await fetch(
-            "http://localhost:5000/notes/" + userId, {
+            "https://studenthelperhub.onrender.com/notes/" + userId, {
                 headers: {
                     "Authorization": "Bearer " + token
                 }

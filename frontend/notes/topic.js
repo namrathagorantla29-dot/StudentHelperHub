@@ -15,7 +15,7 @@ async function loadUserProgress() {
     try {
 
         const response = await fetch(
-            "http://localhost:5000/progress",
+            "https://studenthelperhub.onrender.com/progress",
             {
                 method: "GET",
                 headers: {
@@ -711,7 +711,7 @@ async function bookmarkTopic(index){
     try {
 
         const response = await fetch(
-            "http://localhost:5000/bookmarks/add",
+            "https://studenthelperhub.onrender.com/bookmarks/add",
             {
                 method: "POST",
 
@@ -822,7 +822,7 @@ async function markComplete(index){
     try {
 
         const response = await fetch(
-            "http://localhost:5000/progress/complete",
+            "https://studenthelperhub.onrender.com/progress/complete",
             {
                 method: "POST",
 
@@ -915,7 +915,7 @@ async function markIncomplete(index){
     try {
 
         const response = await fetch(
-            "http://localhost:5000/progress/incomplete",
+            "https://studenthelperhub.onrender.com/progress/incomplete",
             {
                 method: "DELETE",
 

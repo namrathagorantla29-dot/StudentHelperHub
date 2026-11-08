@@ -81,7 +81,7 @@ async function loadSubjects() {
         try {
 
             const response = await fetch(
-                "http://localhost:5000/progress",
+                "https://studenthelperhub.onrender.com/progress",
                 {
                     method: "GET",
                     headers: {

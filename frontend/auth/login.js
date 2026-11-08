@@ -54,7 +54,7 @@ async function loginUser() {
 
 
         const response = await fetch(
-            "http://localhost:5000/login",
+            "https://studenthelperhub.onrender.com/login",
             {
 
                 method: "POST",

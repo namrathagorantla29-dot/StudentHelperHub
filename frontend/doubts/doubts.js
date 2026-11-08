@@ -26,7 +26,7 @@ async function postDoubt(){
     try {
 
         const response = await fetch(
-            "http://localhost:5000/doubts",
+            "https://studenthelperhub.onrender.com/doubts",
             {
                 method: "POST",
 
